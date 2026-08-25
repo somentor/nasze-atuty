@@ -2552,20 +2552,13 @@ html.ms-adv-modal-open .ms-adv-modal{
 
   .ms-adv-productGallery__item,
   .ms-adv-productGallery__item-reversed {
-    display: grid;
-    min-height: 0;
-    height: auto;
-    background-color: #fff;
-  }
+      display: flex;
+      flex-direction: column;
 
-  /* zwykłe kafelki — zdjęcie po lewej */
-  .ms-adv-productGallery__item {
-    grid-template-columns: 140px minmax(0, 1fr);
-  }
-
-  /* drewno / aluminium — zdjęcie po prawej */
-  .ms-adv-productGallery__item-reversed {
-    grid-template-columns: minmax(0, 1fr) 140px;
+      width: 100%;
+      min-width: 0;
+      height: auto;
+      min-height: 0;
   }
 
   .ms-adv-productGallery__image::before{
@@ -2583,40 +2576,26 @@ html.ms-adv-modal-open .ms-adv-modal{
 
   .ms-adv-productGallery__image,
   .ms-adv-productGallery__image-reversed {
-    width: 100%;
-    height: 220px;
-    min-height: 0;
+      order: 2;
+      position: relative;
 
-    align-self: start;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
 
-    overflow: hidden;
-    background: #fff;
+      overflow: hidden;
   }
 
-  .ms-adv-productGallery__image img{
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center;
-
-    max-height: none;
+  .ms-adv-productGallery__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
   }
 
   .ms-adv-productGallery__image-reversed img {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-    object-position: center;
-
-    max-height: none;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
   }
 
   .ms-adv-productGallery__content {
