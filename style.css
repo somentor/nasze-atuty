@@ -1,0 +1,4797 @@
+/* =========================================================
+   MENTORSKLEP — NASZE ATUTY / Shoper V2
+   Scope: .ms-advantages / .ms-adv-*
+   ========================================================= */
+
+html.ms-advantages-page-html,
+body.ms-advantages-page{
+  overflow-x: clip;
+}
+
+@supports not (overflow-x: clip){
+  html.ms-advantages-page-html,
+  body.ms-advantages-page{
+    overflow-x: hidden;
+  }
+}
+
+.ms-advantages{
+  --adv-brand: var(--ms-olive-600, #556b00);
+  --adv-brand-dark: var(--ms-olive-700, #3f5600);
+  --adv-text: var(--ms-text, #111827);
+  --adv-muted: var(--ms-muted, rgba(17,24,39,.72));
+  --adv-bg: var(--ms-surface, #f6f7f9);
+  --adv-soft: rgba(85,107,0,.08);
+  --adv-border: var(--ms-border, rgba(17,24,39,.12));
+  --adv-radius: var(--ms-radius, 16px);
+  --adv-radius-lg: 28px;
+  --adv-radius-sm: var(--ms-radius-sm, 10px);
+  --adv-shadow: var(--ms-shadow, 0 10px 25px rgba(0,0,0,.08));
+  --adv-shadow-lg: 0 24px 70px rgba(17,24,39,.16);
+  --adv-max: 1180px;
+
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #fff;
+  color: var(--adv-text);
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif);
+}
+
+body.ms-advantages-page :where(.page-title, .page__title, .information__title, .boxhead, .box-title):has(+ * .ms-advantages),
+body.ms-advantages-page :where(.page-title, .page__title, .information__title, .boxhead, .box-title):has(~ * .ms-advantages){
+  display: none !important;
+}
+
+.ms-advantages,
+.ms-advantages *{
+  box-sizing: border-box;
+}
+
+.ms-advantages img,
+.ms-advantages svg,
+.ms-advantages video,
+.ms-advantages iframe{
+  max-width: 100%;
+}
+
+.ms-advantages img{
+  display: block;
+}
+
+.ms-adv-container{
+  width: min(var(--adv-max), calc(100% - 32px));
+  margin-inline: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.ms-adv-section{
+  position: relative;
+  padding: clamp(54px, 7vw, 92px) 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.ms-adv-section--muted{
+  background: var(--adv-bg);
+}
+
+.ms-adv-section--soft{
+  background: linear-gradient(135deg, rgba(85,107,0,.065), rgba(255,255,255,.96));
+  border-top: 1px solid rgba(17,24,39,.08);
+  border-bottom: 1px solid rgba(17,24,39,.08);
+}
+
+.ms-adv-sectionHead{
+  width: 100%;
+  max-width: var(--adv-max);
+  margin: 0 0 34px;
+}
+
+.ms-adv-eyebrow{
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+  color: var(--adv-brand-dark) !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  font-weight: 850 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+}
+
+.ms-adv-eyebrow-white{
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  font-weight: 850 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+}
+
+.ms-adv-h1,
+.ms-adv-h2,
+.ms-advantages h1.ms-adv-h1,
+.ms-advantages h2.ms-adv-h2{
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--adv-text) !important;
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif) !important;
+  font-weight: 850 !important;
+  letter-spacing: -.035em !important;
+  line-height: 1.12 !important;
+}
+
+.ms-adv-h1{
+  font-size: clamp(34px, 4.15vw, 60px) !important;
+  max-width: 920px;
+}
+
+.ms-adv-h2{
+  font-size: clamp(25px, 3vw, 42px) !important;
+  max-width: 1120px;
+}
+
+.ms-adv-h2-white{
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif) !important;
+  font-weight: 850 !important;
+  letter-spacing: -.035em !important;
+  line-height: 1.12 !important;
+  font-size: clamp(25px, 3vw, 42px) !important;
+  max-width: 1120px;
+  color: white !important;
+}
+
+.ms-advantages h1.ms-adv-h1::before,
+.ms-advantages h1.ms-adv-h1::after,
+.ms-advantages h2.ms-adv-h2::before,
+.ms-advantages h2.ms-adv-h2::after,
+.ms-advantages h3::before,
+.ms-advantages h3::after{
+  content: none !important;
+  display: none !important;
+}
+
+.ms-advantages .ms-adv-brandWord{
+  color: var(--adv-brand) !important;
+  white-space: nowrap;
+  font: inherit;
+}
+
+.ms-advantages .ms-adv-brandPhrase{
+  display: inline-block;
+  white-space: nowrap;
+  color: inherit;
+}
+
+.ms-advantages .ms-adv-brandPhrase .ms-adv-brandWord{
+  display: inline;
+}
+
+.ms-advantages :where(
+  .ms-adv-h1,
+  .ms-adv-h2,
+  .ms-adv-featureCard h3,
+  .ms-adv-benefitPanel__text h3,
+  .ms-adv-process h3,
+  .ms-adv-trustGrid h3,
+  .ms-adv-modal__content h3
+){
+  text-wrap: balance;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.ms-advantages :where(
+  .ms-adv-lead,
+  .ms-adv-sub,
+  .ms-adv-featureCard p,
+  .ms-adv-benefitPanel__text p,
+  .ms-adv-techGrid p,
+  .ms-adv-process p,
+  .ms-adv-trustGrid p,
+  .ms-adv-faq__panel p,
+  .ms-adv-final p,
+  .ms-adv-note,
+  .ms-adv-checkList li,
+  .ms-adv-modal__content li
+){
+  text-wrap: pretty;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.ms-adv-lead,
+.ms-adv-sub,
+.ms-adv-final p{
+  margin: 18px 0 0 !important;
+  max-width: 1080px;
+  color: #374151 !important;
+  font-size: clamp(16px, 1.2vw, 19px) !important;
+  line-height: 1.72 !important;
+}
+
+.ms-adv-lead--small{
+  font-size: 16px !important;
+}
+
+.ms-adv-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.ms-adv-actions--center{
+  justify-content: center;
+}
+
+.ms-adv-btn{
+  min-height: 46px !important;
+  padding: 13px 18px !important;
+  border-radius: 13px !important;
+}
+
+/* HERO */
+.ms-adv-hero{
+  position: relative;
+  overflow: hidden;
+  padding: clamp(54px, 7vw, 96px) 0 clamp(66px, 8vw, 112px);
+  background: white;
+}
+
+.ms-adv-hero__stripe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--adv-brand-dark), var(--adv-brand), rgba(85,107,0,.24));
+}
+
+.ms-adv-hero__grid{
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(420px, .98fr);
+  gap: clamp(34px, 5.6vw, 82px);
+  align-items: center;
+}
+
+.ms-adv-hero__claim{
+  margin: 14px 0 0 !important;
+  color: var(--adv-brand-dark) !important;
+  font-weight: 850 !important;
+  font-size: 16px !important;
+}
+
+.ms-adv-badges{
+  list-style: none !important;
+  margin: 30px 0 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ms-adv-badges li{
+  margin: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(85,107,0,.09);
+  color: var(--adv-brand-dark) !important;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.1;
+}
+
+.ms-adv-badges li::before{
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--adv-brand);
+  box-shadow: 0 0 0 4px rgba(85,107,0,.12);
+}
+
+.ms-adv-hero__media{
+  position: relative;
+  min-height: clamp(410px, 38vw, 610px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  overflow: visible;
+}
+
+.ms-adv-hero__media::before,
+.ms-adv-hero__media::after{
+  content: none;
+  display: none;
+}
+
+.ms-adv-photo{
+  margin: 0;
+  border-radius: 28px;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,.08);
+  box-shadow: 0 18px 50px rgba(17,24,39,.10);
+}
+
+.ms-adv-photo--main{
+  width: min(100%, 660px);
+  height: clamp(340px, 35vw, 520px);
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: none;
+}
+
+.ms-adv-photo--main img{
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 18px;
+  margin: 0;
+  filter: none;
+  background: #fff;
+  border-radius: inherit;
+  transition: opacity .18s ease;
+}
+
+.ms-adv-photo--main:hover img{
+  transform: none;
+}
+
+.ms-adv-heroThumbs{
+  width: min(100%, 520px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ms-adv-heroThumb{
+  min-height: 120px;
+  padding: 10px;
+  border: 1px solid rgba(17,24,39,.09);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(17,24,39,.07);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.ms-adv-heroThumb:hover,
+.ms-adv-heroThumb.is-active{
+  transform: translateY(-2px);
+  border-color: rgba(85,107,0,.32);
+  box-shadow: 0 16px 36px rgba(17,24,39,.10);
+}
+
+.ms-adv-heroThumb img{
+  width: 100%;
+  height: 116px;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.ms-adv-heroThumb.is-active,
+.ms-adv-heroThumb[hidden]{
+  display: none !important;
+}
+
+/* DECO + WAVES */
+.ms-adv-wave{
+  line-height: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.ms-adv-wave svg{
+  display: block;
+  width: 100%;
+  height: 58px;
+}
+
+.ms-adv-wave path{
+  fill: currentColor;
+}
+
+.ms-adv-wave--white-to-muted{ background: #fff; color: var(--adv-bg); }
+.ms-adv-wave--muted-to-white{ background: var(--adv-bg); color: #fff; }
+
+.ms-adv-deco{
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .9;
+}
+
+.ms-adv-deco--dots{
+  width: 150px;
+  height: 150px;
+  background-image: radial-gradient(circle, rgba(85,107,0,.16) 2px, transparent 2.5px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(circle, #000 55%, transparent 75%);
+}
+
+.ms-adv-deco--leaf{
+  width: 190px;
+  height: 250px;
+  border-radius: 55% 45% 60% 40%;
+  background: linear-gradient(145deg, rgba(85,107,0,.10), rgba(85,107,0,.03));
+  transform: rotate(-28deg);
+}
+
+.ms-adv-deco--leaf::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  bottom: 24px;
+  width: 2px;
+  background: repeating-linear-gradient(to bottom, rgba(85,107,0,.20), rgba(85,107,0,.20) 6px, transparent 6px, transparent 14px);
+  transform: translateX(-50%) rotate(4deg);
+  border-radius: 99px;
+}
+
+.ms-adv-deco--hero-left{ left: -70px; top: 18px; }
+.ms-adv-deco--hero-dots{ left: 35%; top: 58px; }
+.ms-adv-deco--right{ right: 26px; top: 46px; }
+.ms-adv-deco--section-right{ right: -48px; top: 8px; transform: rotate(24deg); }
+.ms-adv-deco--stats{ right: 7%; top: 24px; background-image: radial-gradient(circle, rgba(255,255,255,.16) 2px, transparent 2.5px); }
+.ms-adv-deco--final-left{ left: -64px; top: 20px; }
+.ms-adv-deco--final-dots{ right: 10%; top: 34px; }
+
+/* FEATURE GRID */
+.ms-adv-featureGrid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* =========================================================
+   SEKCJA 3 — KARTA 25% / 75%
+   ========================================================= */
+
+.ms-adv-featureCard {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 25% 75%;
+
+  min-height: 300px;
+  overflow: hidden;
+
+  background: linear-gradient(180deg,#fff,rgba(246, 247, 249, .88));
+
+  border: 1px solidvar(--adv-border);
+  border-radius: 22px;
+}
+
+/* zielona linia u góry */
+.ms-adv-featureCard::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 5;
+
+  height: 4px;
+
+  background: linear-gradient(90deg, var(--adv-brand-dark), var(--adv-brand));
+}
+
+/* dekoracyjne kółko */
+.ms-adv-featureCard::after {
+  content: "";
+
+  position: absolute;
+
+  right: -42px;
+  bottom: -42px;
+
+  width: 118px;
+  height: 118px;
+
+  border-radius: 999px;
+
+  background: rgba(85, 107, 0, .06);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   LEWA CZĘŚĆ — 25%
+   ========================================================= */
+
+.ms-adv-featureCard__media {
+  position: relative;
+
+  min-width: 0;
+  min-height: 100%;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:rgba(85, 107, 0, .055);
+
+  border-right: 1px solid rgba(17, 24, 39, .08);
+}
+
+/* zdjęcie */
+.ms-adv-featureCard__media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 268px;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform .45s ease, opacity .3s ease;
+}
+
+.ms-adv-featureCard:hover
+.ms-adv-featureCard__media img {
+  transform: scale(1.045);
+}
+
+
+/* =========================================================
+   NUMER NA ZDJĘCIU
+   ========================================================= */
+
+.ms-adv-featureCard__icon {
+  position: absolute;
+
+  left: 16px;
+  top: 16px;
+
+  z-index: 3;
+
+  display: grid;
+  place-items: center;
+
+  width: 46px;
+  height: 46px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border-radius: 14px;
+
+  background: #fff;
+  color: var(--adv-brand-dark);
+
+  font-size: 13px;
+  line-height: 1;
+
+  font-weight: 900;
+
+  box-shadow: 0 8px 22px rgba(17, 24, 39, .18);
+}
+
+
+/* =========================================================
+   PRAWA CZĘŚĆ — 75%
+   ========================================================= */
+
+.ms-adv-featureCard__body {
+  position: relative;
+
+  z-index: 1;
+
+  min-width: 0;
+
+  padding: 24px 24px 22px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-adv-featureCard__title {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.ms-adv-featureCard h3,
+.ms-advantages .ms-adv-featureCard h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: var(--adv-text) !important;
+  font-size: 20px !important;
+  line-height: 1.35 !important;
+  font-weight: 750 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.ms-adv-featureCard__p-upper{
+  font-size: 15px !important;
+  color: #6b7280 !important;
+}
+
+.ms-adv-featureCard__p-lower{
+  font-size: 15px !important;
+  color: var(--adv-brand-dark) !important;
+  font-weight: 650 !important;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+
+/* =========================================================
+   LISTA
+   ========================================================= */
+
+.ms-adv-featureCard__list {
+  display: grid;
+
+  gap: 9px;
+
+  margin:18px 0 18px !important;
+
+  padding: 0 !important;
+
+  list-style: none !important;
+}
+
+
+.ms-adv-featureCard__list li {
+  position: relative;
+
+  margin: 0 !important;
+
+  padding:0 0 0 28px !important;
+
+  list-style:none !important;
+
+  color: #6b7280 !important;
+
+  font-size: 13px !important;
+
+  font-weight: 500;
+
+  line-height:1.5 !important;
+}
+
+
+.ms-adv-featureCard__list li::marker {
+  content: "";
+}
+
+
+.ms-adv-featureCard__list li::before {
+  content: "✓";
+
+  position: absolute;
+
+  left: 0;
+  top: .05em;
+
+  display: grid;
+  place-items: center;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: var(--adv-brand-dark);
+
+  color: #fff;
+
+  font-size: 11px;
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   KLIKNIJ BY ROZWINĄĆ
+   ========================================================= */
+
+.ms-adv-featureCard__more {
+  margin-top: auto;
+
+  padding-top: 18px;
+
+  color: var(--adv-brand-dark);
+
+  font-size: 12px;
+
+  font-weight: 850;
+}
+
+@media (max-width: 700px) {
+
+  .ms-adv-featureCard {
+    grid-template-columns: 35% 65%;
+    min-height: 220px;
+  }
+
+  .ms-adv-featureCard__media img {
+    min-height: 220px;
+  }
+
+  .ms-adv-featureCard__body {
+    padding: 18px 16px;
+  }
+
+  .ms-adv-featureCard h3,
+  .ms-advantages .ms-adv-featureCard h3 {
+    font-size: 17px !important;
+  }
+
+  .ms-adv-featureCard__icon {
+    left: 10px;
+    top: 12px;
+
+    width: 40px;
+    height: 40px;
+  }
+
+}
+
+/* BENEFITS */
+.ms-adv-benefits{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, .88fr);
+  gap: 36px;
+  align-items: stretch;
+}
+
+.ms-adv-benefitPanel{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-adv-benefitPanel[hidden]{ display: none !important; }
+
+.ms-adv-benefitPanel figure{
+  margin: 0;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,.08);
+  background: #fff;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 10px 28px rgba(17,24,39,.06);
+}
+
+.ms-adv-benefitPanel img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 18px;
+}
+
+.ms-adv-benefitPanel__text{
+  margin-top: 16px;
+  padding: 24px;
+  border-radius: 22px;
+  border: 1px solid var(--adv-border);
+  background: #fff;
+  flex: 1;
+  box-shadow: 0 1px 0 rgba(17,24,39,.03);
+}
+
+.ms-adv-benefitPanel__text h3,
+.ms-advantages .ms-adv-benefitPanel__text h3{
+  margin: 0 0 10px !important;
+  padding: 0 !important;
+  color: var(--adv-text) !important;
+  font-size: 20px !important;
+  line-height: 1.25 !important;
+  font-weight: 850 !important;
+}
+
+.ms-adv-benefitPanel__text p{
+  margin: 0 !important;
+  color: #374151 !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+}
+
+.ms-adv-benefits__tabs{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ms-adv-benefits__tabs button{
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--adv-border);
+  background: #fff;
+  color: var(--adv-text);
+  border-radius: 18px;
+  padding: 17px 18px;
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif);
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 750;
+  cursor: pointer;
+  transition: transform .16s ease, border-color .16s ease, background .16s ease, color .16s ease;
+}
+
+.ms-adv-benefits__tabs button:hover{ transform: translateX(4px); }
+.ms-adv-benefits__tabs button.is-active{ border-color: rgba(85,107,0,.42); background: rgba(85,107,0,.08); color: var(--adv-brand-dark); }
+
+/* =========================================================
+   SEKCJA 4 — TECHNOLOGIE I MATERIAŁY
+   ========================================================= */
+
+#ms-adv-tech {
+  position: relative;
+
+  padding: clamp(64px, 6vw, 84px) 0 clamp(72px, 7vw, 96px);
+  background: radial-gradient(circle at 8% 12%, rgba(85, 107, 0, .025), transparent 28%), #f7f8fa;
+}
+
+/* =========================================================
+   NAGŁÓWEK SEKCJI
+   ========================================================= */
+
+#ms-adv-tech .ms-adv-sectionHead {
+  width: 100%;
+  max-width: 1120px;
+
+  margin: 0 0 42px;
+}
+
+#ms-adv-tech .ms-adv-eyebrow {
+  margin-bottom: 12px !important;
+}
+
+#ms-adv-tech .ms-adv-h2 {
+  max-width: 1100px;
+}
+
+/* =========================================================
+   SIATKA
+   ========================================================= */
+
+#ms-adv-tech .ms-adv-techGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 24px;
+}
+
+/* =========================================================
+   KARTA
+   ========================================================= */
+
+#ms-adv-tech .ms-adv-techGrid article {
+  position: relative;
+
+  min-height: 286px;
+
+  padding: 30px 30px 28px;
+  overflow: hidden;
+
+  border:1px solid rgba(17, 24, 39, .11);
+  border-radius: 18px;
+
+  background:rgba(255, 255, 255, .92);
+  box-shadow: 0 8px 24px rgba(17, 24, 39, .05);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    border-color .2s ease;
+}
+
+/* pionowy pasek */
+#ms-adv-tech .ms-adv-techGrid article::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  border-radius: 0 999px 999px 0;
+
+  background: linear-gradient(180deg, var(--adv-brand-dark), var(--adv-brand));
+}
+
+/* hover */
+#ms-adv-tech .ms-adv-techGrid article:hover {
+  transform: translateX(-4px);
+
+  border-color:rgba(85, 107, 0, .28);
+
+  box-shadow: 10px 10px 10px rgba(17, 24, 39, .2);
+}
+
+
+/* =========================================================
+   GÓRNA CZĘŚĆ KARTY
+   ========================================================= */
+
+#ms-adv-tech .ms-adv-techGrid__top {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  min-height: 58px;
+}
+
+
+/* =========================================================
+   NUMER + KRESKA
+   ========================================================= */
+
+#ms-adv-tech .ms-adv-techGrid__number {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding-top: 5px;
+  margin-bottom: 15px;
+}
+
+
+#ms-adv-tech .ms-adv-techGrid__number span {
+  display: inline-block;
+  margin: 0;
+
+  color: var(--adv-brand-dark);
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: .01em;
+  text-transform: none;
+}
+
+
+#ms-adv-tech .ms-adv-techGrid__number i {
+  display: block;
+
+  width: 52px;
+  height: 1px;
+
+  background: #000;
+}
+
+
+/* =========================================================
+   IKONA
+   ========================================================= */
+
+#ms-adv-tech .ms-adv-techGrid__icon {
+  flex: 0 0 auto;
+
+  width: 66px;
+  height: 66px;
+
+  color: var(--adv-brand-dark);
+}
+
+
+#ms-adv-tech .ms-adv-techGrid__icon svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================================
+   TYTUŁ
+   ========================================================= */
+
+#ms-adv-tech .ms-adv-techGrid strong {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+  color: var(--adv-text);
+  font-size: 23px;
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -.035em;
+}
+
+
+/* =========================================================
+   ZIELONY PODTYTUŁ
+   ========================================================= */
+
+#ms-adv-tech .ms-adv-techGrid__label {
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--adv-brand-dark);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   OPIS
+   ========================================================= */
+
+#ms-adv-tech .ms-adv-techGrid p {
+  margin: 20px 0 0 !important;
+  padding: 0 !important;
+  color: #374151 !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   DEKORACJA W PRAWYM GÓRNYM ROGU
+   ========================================================= */
+
+#ms-adv-tech
+.ms-adv-deco--section-right {
+  right: -36px;
+  top: -30px;
+
+  width: 170px;
+  height: 210px;
+  opacity: .7;
+  transform: rotate(28deg);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+  #ms-adv-tech {
+    padding: 56px 0 64px;
+  }
+
+  #ms-adv-tech .ms-adv-sectionHead {
+    margin-bottom: 32px;
+  }
+
+  #ms-adv-tech .ms-adv-sub {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  #ms-adv-tech .ms-adv-techGrid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  #ms-adv-tech .ms-adv-techGrid article {
+    min-height: 0;
+
+    padding: 24px 22px;
+  }
+
+  #ms-adv-tech .ms-adv-techGrid strong {
+    font-size: 21px;
+  }
+
+  #ms-adv-tech .ms-adv-techGrid__icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  #ms-adv-tech .ms-adv-techGrid__number i {
+    width: 40px;
+  }
+
+}
+
+/* SCIENCE */
+.ms-adv-science{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .88fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.ms-adv-checkList{
+  list-style: none !important;
+  margin: 28px 0 0 !important;
+  padding: 0 !important;
+  display: grid;
+  gap: 14px;
+}
+
+.ms-adv-checkList li{
+  position: relative;
+  margin: 0 !important;
+  padding-left: 30px;
+  color: #374151 !important;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.ms-adv-checkList li::before{
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: .08em;
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background: var(--adv-brand-dark);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.ms-adv-note{
+  margin-top: 24px;
+  padding: 18px 20px;
+  border-left: 5px solid var(--adv-brand-dark);
+  border-radius: 16px;
+  background: rgba(85,107,0,.08);
+  color: #374151;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.ms-adv-science__mockup{
+  position: relative;
+  margin: 0;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(17,24,39,.08);
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(17,24,39,.08);
+}
+
+.ms-adv-science__mockup::after{
+  content: none;
+  display: none;
+}
+
+.ms-adv-science__mockup img{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 18px;
+  margin: 0;
+  transform: none;
+  filter: none;
+  background: #fff;
+  border-radius: inherit;
+}
+
+/* =========================================================
+   SEKCJA 5 — JAK DZIAŁAMY
+   ========================================================= */
+
+#ms-adv-process {
+  position: relative;
+
+  padding:
+    clamp(72px, 7vw, 92px)
+    0
+    clamp(86px, 8vw, 110px);
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(85, 107, 0, .03),
+      rgba(85, 107, 0, .015)
+    );
+
+  border-top: 1px solid rgba(148, 163, 184, .15);
+}
+
+
+/* =========================================================
+   NAGŁÓWEK
+   ========================================================= */
+
+#ms-adv-process .ms-adv-sectionHead {
+  width: 100%;
+  max-width: none;
+
+  margin:
+    0
+    0
+    58px !important;
+
+  text-align: center;
+}
+
+
+#ms-adv-process .ms-adv-eyebrow {
+  margin-bottom: 12px !important;
+  text-align: center;
+}
+
+#ms-adv-process .ms-adv-eyebrow-bottom {
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif) !important;
+  font-size: 15px !important;
+  line-height: 1.2 !important;
+  font-weight: 850 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+
+  color: var(--adv-brand-dark);
+
+  margin-top: 30px !important;
+  text-align: center;
+}
+
+
+#ms-adv-process .ms-adv-h2 {
+  position: relative;
+
+  max-width: none;
+
+  padding-bottom: 22px !important;
+
+  text-align: center;
+  text-wrap: balance;
+}
+
+
+/* zielona kreska pod tytułem */
+#ms-adv-process .ms-adv-h2::after {
+  content: "" !important;
+  display: block !important;
+
+  width: 76px;
+  height: 5px;
+
+  margin: 28px auto 0;
+  border-radius: 999px;
+  background: var(--adv-brand);
+}
+
+
+/* =========================================================
+   CAŁA OŚ PROCESU
+   ========================================================= */
+
+#ms-adv-process .ms-adv-process {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  gap: 24px;
+
+  align-items: start;
+
+  width: 100%;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  list-style: none !important;
+}
+
+
+/* =========================================================
+   ZIELONY ŁUK
+   ========================================================= */
+
+#ms-adv-process .ms-adv-process::before {
+  content: "";
+
+  position: absolute;
+
+  left: 6%;
+  right: 6%;
+
+  top: 46px;
+
+  height: 120px;
+
+  border-top: 4px solid var(--adv-brand);
+
+  border-radius: 50%;
+  opacity: .9;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   POJEDYNCZY KROK
+   ========================================================= */
+
+#ms-adv-process .ms-adv-process > li {
+  position: relative;
+
+  z-index: 1;
+
+  min-width: 0;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  list-style: none !important;
+
+  background: transparent;
+
+  border: 0;
+
+  box-shadow: none;
+
+  text-align: center;
+}
+
+/* KAFELKI Z IKONAMI — JAK DZIAŁAMY */
+.ms-adv-process > li > div[aria-hidden="true"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border: 3px solid #556b00;
+  border-radius: 24px;
+
+  pointer-events: none;
+  z-index: 5;
+}
+
+
+/* kroki 2 i 4 wyżej */
+
+#ms-adv-process
+.ms-adv-process
+> li:nth-child(even) {
+  margin-top: -30px !important;
+}
+
+
+/* usunięcie standardowego markera OL */
+
+#ms-adv-process
+.ms-adv-process
+> li::marker {
+  content: "";
+}
+
+
+/* wyłącz stare pseudoelementy,
+   jeśli były wcześniej używane */
+
+#ms-adv-process
+.ms-adv-process
+> li::before,
+
+#ms-adv-process
+.ms-adv-process
+> li::after {
+  content: none !important;
+}
+
+
+/* =========================================================
+   NUMEREK 1 / 2 / 3 / 4 / 5
+   ========================================================= */
+
+#ms-adv-process
+.ms-adv-process
+> li
+> span:first-child {
+  position: relative;
+
+  z-index: 3;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  background: var(--adv-brand);
+
+  color: #fff;
+
+  font-size: 15px;
+  line-height: 1;
+
+  font-weight: 900;
+
+  box-shadow: 0 8px 20px rgba(85, 107, 0, .25);
+}
+
+
+/* =========================================================
+   KAFEL Z IKONĄ
+   ========================================================= */
+
+#ms-adv-process
+.ms-adv-process
+> li
+> div {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 116px;
+  height: 116px;
+
+  margin: 0 auto 18px;
+
+  padding: 0;
+
+  border: 1px solid rgba(85, 107, 0, .16);
+
+  border-radius: 28px;
+
+  background: #fff;
+
+  box-shadow: 0 10px 28px rgba(15, 23, 42, .07);
+
+  font-family:
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji",
+    sans-serif;
+
+  font-size: 52px;
+
+  line-height: 1;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   TYTUŁ KROKU
+   ========================================================= */
+
+#ms-adv-process
+.ms-adv-process > li > h3 {
+  margin: 0 0 10px !important;
+  padding: 0 !important;
+  color: var(--adv-text) !important;
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  letter-spacing: -.015em !important;
+  text-transform:none !important;
+}
+
+
+/* =========================================================
+   OPIS
+   ========================================================= */
+
+#ms-adv-process
+.ms-adv-process
+> li
+> p {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #475569 !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 980px) {
+
+  #ms-adv-process
+  .ms-adv-process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+  /* na tablecie usuwamy łuk */
+  #ms-adv-process
+  .ms-adv-process::before {
+    display: none;
+  }
+
+  #ms-adv-process
+  .ms-adv-process
+  > li,
+
+  #ms-adv-process
+  .ms-adv-process
+  > li:nth-child(even) {
+    margin: 0 !important;
+
+    padding: 26px 24px !important;
+
+    border-radius: 22px;
+
+    background: #fff;
+
+    box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  #ms-adv-process {
+    padding: 62px 0 68px;
+  }
+
+  #ms-adv-process
+  .ms-adv-sectionHead {
+    margin-bottom: 38px !important;
+  }
+
+  #ms-adv-process
+  .ms-adv-process {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  #ms-adv-process
+  .ms-adv-process
+  > li {
+    text-align: center;
+  }
+
+  #ms-adv-process
+  .ms-adv-process
+  > li
+  > div {
+    width: 108px;
+    height: 108px;
+
+    font-size: 48px;
+  }
+
+  #ms-adv-process
+  .ms-adv-process
+  > li
+  > h3 {
+    font-size: 18px !important;
+  }
+
+}
+
+/* STATS */
+.ms-adv-stats{
+  position: relative;
+  overflow: hidden;
+  padding: clamp(54px, 7vw, 84px) 0;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(255,255,255,.10), transparent 28%),
+    linear-gradient(135deg, var(--adv-brand-dark), var(--adv-brand));
+  color: #fff;
+}
+
+.ms-adv-stats__label{
+  margin: 0 0 30px !important;
+  color: #fff !important;
+  text-align: center;
+  font-size: 13px !important;
+  font-weight: 850 !important;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.ms-adv-stats__grid{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ms-adv-stats__grid div{
+  min-height: 126px;
+
+  display: grid;
+  align-content: center;
+  justify-items: center;
+
+  text-align: center;
+
+  padding: 22px 14px;
+
+  border-radius: 22px;
+
+  background: #fff;
+  color: #3f5600;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    0 12px 30px rgba(17,24,39,.16);
+}
+
+.ms-adv-stats__grid strong{ color: #3f5600; font-size: clamp(25px, 3vw, 38px); line-height: 1; font-weight: 900; letter-spacing: -.03em; }
+.ms-adv-stats__grid span{ display: block; margin-top: 10px; color: rgba(255,255,255,.76); font-size: 13px; line-height: 1.35; }
+
+/* TRUST */
+.ms-adv-trustGrid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ms-adv-trustGrid article{
+  position: relative;
+  overflow: hidden;
+
+  padding: 24px;
+  border: 1px solid var(--adv-border);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(17,24,39,.03);
+}
+
+/* dekoracyjne kółko */
+.ms-adv-trustGrid article::after {
+  content: "";
+
+  position: absolute;
+
+  right: -42px;
+  bottom: -42px;
+
+  width: 118px;
+  height: 118px;
+
+  border-radius: 999px;
+
+  background: rgba(85, 107, 0, .06);
+
+  pointer-events: none;
+}
+
+.ms-adv-trustGrid h3,
+.ms-advantages .ms-adv-trustGrid h3{
+  margin: 0 0 10px !important;
+  padding: 0 !important;
+  color: var(--adv-text) !important;
+  font-size: 18px !important;
+  line-height: 1.25 !important;
+  font-weight: 850 !important;
+}
+
+.ms-adv-trustGrid p{ margin: 0 0 16px !important; color: #6b7280 !important; font-size: 14px !important; line-height: 1.65 !important; }
+.ms-adv-trustGrid a{ color: var(--adv-brand-dark) !important; font-weight: 850; text-decoration: none !important; }
+.ms-adv-trustGrid a:hover{ text-decoration: underline !important; }
+
+/* FAQ */
+.ms-adv-faqWrap{ max-width: 950px; }
+.ms-adv-faq{ display: grid; gap: 10px; }
+.ms-adv-faq__item{ border: 1px solid var(--adv-border); border-radius: 18px; background: #fff; overflow: hidden; transition: border-color .18s ease, box-shadow .18s ease; }
+.ms-adv-faq__item.is-open{ border-color: rgba(85,107,0,.34); box-shadow: 0 12px 28px rgba(85,107,0,.08); }
+.ms-adv-faq__item button{
+  width: 100%;
+  position: relative;
+  padding: 18px 54px 18px 20px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: var(--adv-text);
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif);
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.ms-adv-faq__item button::after{
+  content: "+";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border-radius: 10px;
+  background: rgba(85,107,0,.10);
+  color: var(--adv-brand-dark);
+  font-weight: 900;
+}
+
+.ms-adv-faq__item button[aria-expanded="true"]::after{ content: "–"; }
+.ms-adv-faq__panel{ padding: 0 20px 18px; }
+.ms-adv-faq__panel p{ margin: 0 !important; color: #6b7280 !important; font-size: 14px !important; line-height: 1.65 !important; }
+
+/* FINAL */
+.ms-adv-final{
+  position: relative;
+  overflow: hidden;
+  padding: clamp(68px, 8vw, 116px) 0;
+  background: radial-gradient(circle at 50% 0%, rgba(85,107,0,.10), transparent 38%), var(--adv-bg);
+  text-align: center;
+}
+
+.ms-adv-final__inner{ max-width: 850px; }
+.ms-adv-final .ms-adv-h2{ margin-inline: auto !important; }
+.ms-adv-final p{ max-width: 850px; margin-left: auto !important; margin-right: auto !important; }
+
+/* MODAL */
+html.ms-adv-modal-open,
+html.ms-adv-modal-open body{
+  overflow: hidden !important;
+}
+
+/*
+   Modal musi wejść ponad sticky menu Shopera, dolne przyciski typu
+   „Prawa autorskie” / „Idź do góry” i inne fixed UI.
+   .ms-advantages ma isolation, więc przy otwartym modalu podnosimy też rodzica.
+*/
+html.ms-adv-modal-open .ms-advantages{
+  z-index: 2147482000 !important;
+  overflow: visible !important;
+}
+
+html.ms-adv-modal-open .ms-adv-modal{
+  z-index: 2147483000 !important;
+}
+
+.ms-adv-modal[hidden]{
+  display: none !important;
+}
+
+.ms-adv-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(10px, 2vw, 18px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@supports (height: 100dvh){
+  .ms-adv-modal{
+    min-height: 100dvh;
+  }
+}
+
+.ms-adv-modal__backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(17,24,39,.58);
+  backdrop-filter: blur(4px);
+}
+
+.ms-adv-modal__panel{
+  position: relative;
+  z-index: 1;
+  width: min(900px, calc(100vw - 32px));
+  max-height: min(760px, calc(100vh - 32px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  border-radius: 28px;
+  background: #fff;
+  border-top: 5px solid var(--adv-brand);
+  box-shadow: 0 28px 80px rgba(0,0,0,.28);
+  animation: msAdvModalIn .22s ease-out both;
+}
+
+@supports (height: 100dvh){
+  .ms-adv-modal__panel{
+    max-height: min(760px, calc(100dvh - 32px));
+  }
+}
+
+@keyframes msAdvModalIn{
+  from{ opacity: 0; transform: translateY(14px) scale(.97); }
+  to{ opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ms-adv-modal__close{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: rgba(255,255,255,.90);
+  color: #6b7280;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ms-adv-modal__close:hover{
+  border-color: rgba(85,107,0,.35);
+  color: var(--adv-text);
+}
+
+.ms-adv-modal__grid{
+  display: grid;
+  grid-template-columns: minmax(280px, .9fr) minmax(320px, 1fr);
+  min-height: 0;
+}
+
+.ms-adv-modal__image{
+  margin: 0;
+  min-height: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 24px 0 0 24px;
+}
+
+.ms-adv-modal__image img{
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
+  object-position: center;
+  padding: 22px;
+  border-radius: 24px;
+  filter: none;
+  background: #fff;
+}
+
+.ms-adv-modal__content{
+  position: relative;
+  padding: 36px 32px 26px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ms-adv-modal__icon{
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  background: rgba(85,107,0,.10);
+  color: var(--adv-brand-dark);
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.ms-adv-modal__content h3,
+.ms-advantages .ms-adv-modal__content h3{
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--adv-text) !important;
+  font-size: 23px !important;
+  line-height: 1.18 !important;
+  font-weight: 850 !important;
+}
+
+.ms-adv-modal__content p{
+  margin: 14px 0 0 !important;
+  color: #6b7280 !important;
+  font-size: 15px !important;
+  line-height: 1.62 !important;
+}
+
+.ms-adv-modal__content ul{
+  list-style: none !important;
+  margin: 18px 0 0 !important;
+  padding: 0 !important;
+  display: grid;
+  gap: 9px;
+}
+
+.ms-adv-modal__content li{
+  position: relative;
+  display: block;
+  margin: 0 !important;
+  padding-left: 30px;
+  color: #4b5563 !important;
+  font-size: 14px;
+  line-height: 1.44;
+}
+
+.ms-adv-modal__content li::before{
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: .08em;
+  width: 19px;
+  height: 19px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--adv-brand);
+  color: #fff;
+  background: var(--adv-brand);
+  box-shadow: 0 0 0 4px rgba(85,107,0,.12);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.ms-adv-modal__footer{
+  margin-top: 20px;
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid rgba(17,24,39,.10);
+}
+
+.ms-adv-modal__nav{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ms-adv-modal__nav button{
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--adv-border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--adv-text);
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ms-adv-modal__nav button:hover{
+  border-color: rgba(85,107,0,.35);
+  background: rgba(85,107,0,.08);
+}
+
+.ms-adv-modal__index{
+  color: #9ca3af;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+/* Niższe ekrany / laptopy: modal jest bardziej kompaktowy i zawsze mieści się w oknie. */
+@media (max-height: 820px), (max-width: 1280px){
+  .ms-adv-modal{
+    padding: 12px;
+    align-items: center;
+  }
+
+  .ms-adv-modal__panel{
+    width: min(860px, calc(100vw - 24px));
+    max-height: calc(100vh - 24px);
+    border-radius: 24px;
+  }
+
+  @supports (height: 100dvh){
+    .ms-adv-modal__panel{
+      max-height: calc(100dvh - 24px);
+    }
+  }
+
+  .ms-adv-modal__grid{
+    grid-template-columns: minmax(250px, .82fr) minmax(300px, 1fr);
+  }
+
+  .ms-adv-modal__image img{
+    max-height: 300px;
+    padding: 18px;
+  }
+
+  .ms-adv-modal__content{
+    padding: 28px 28px 22px;
+  }
+
+  .ms-adv-modal__icon{
+    width: 40px;
+    height: 40px;
+    margin-bottom: 13px;
+  }
+
+  .ms-adv-modal__content h3,
+  .ms-advantages .ms-adv-modal__content h3{
+    font-size: 21px !important;
+    line-height: 1.17 !important;
+  }
+
+  .ms-adv-modal__content p{
+    margin-top: 12px !important;
+    font-size: 14px !important;
+    line-height: 1.58 !important;
+  }
+
+  .ms-adv-modal__content ul{
+    margin-top: 14px !important;
+    gap: 8px;
+  }
+
+  .ms-adv-modal__content li{
+    font-size: 13.5px;
+    line-height: 1.38;
+  }
+
+  .ms-adv-modal__footer{
+    margin-top: 15px;
+    padding-top: 14px;
+  }
+}
+
+@media (max-height: 680px) and (min-width: 761px){
+  .ms-adv-modal{
+    align-items: flex-start;
+  }
+
+  .ms-adv-modal__panel{
+    margin-block: 12px;
+  }
+
+  .ms-adv-modal__image img{
+    max-height: 230px;
+    padding: 16px;
+  }
+
+  .ms-adv-modal__content{
+    padding: 24px 26px 20px;
+  }
+
+  .ms-adv-modal__content p{
+    line-height: 1.5 !important;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1080px){
+  .ms-adv-hero__grid,
+  .ms-adv-benefits,
+  .ms-adv-science{ grid-template-columns: 1fr; }
+  .ms-adv-hero__media{ max-width: 760px; margin-inline: auto; width: 100%; }
+  .ms-adv-featureGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ms-adv-techGrid,
+  .ms-adv-trustGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ms-adv-process{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ms-adv-stats__grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px){
+  .ms-advantages{ width: 100vw !important; max-width: 100vw !important; margin-left: calc(50% - 50vw) !important; margin-right: calc(50% - 50vw) !important; }
+  .ms-adv-container{ width: min(100% - 24px, var(--adv-max)); }
+  .ms-adv-section{ padding: 46px 0; }
+  .ms-adv-hero{ padding: 46px 0 60px; }
+  .ms-adv-actions,
+  .ms-adv-actions--center{ flex-direction: column; }
+  .ms-adv-btn{ width: 100%; }
+  .ms-adv-featureGrid,
+  .ms-adv-techGrid,
+  .ms-adv-trustGrid,
+  .ms-adv-process,
+  .ms-adv-stats__grid{ grid-template-columns: 1fr; }
+  .ms-adv-featureCard{ min-height: auto; }
+  .ms-adv-benefits__tabs button:hover{ transform: none; }
+  .ms-adv-hero__media{ min-height: 300px; }
+  .ms-adv-photo--main{ height: 300px; min-height: 0; transform: none; }
+  .ms-adv-photo--main img{ width: 100%; height: 100%; margin: 0; max-height: 100%; padding: 14px; }
+  .ms-adv-heroThumbs{ width: 100%; }
+  .ms-adv-heroThumb{ min-height: 96px; }
+  .ms-adv-heroThumb img{ height: 92px; }
+  .ms-adv-science__mockup{ min-height: 330px; }
+  .ms-adv-science__mockup img{ transform: none; width: 100%; height: 100%; padding: 14px; }
+  .ms-adv-modal{
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .ms-adv-modal__panel{
+    width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    margin-block: 10px;
+    border-radius: 22px;
+  }
+
+  @supports (height: 100dvh){
+    .ms-adv-modal__panel{
+      max-height: calc(100dvh - 20px);
+    }
+  }
+
+  .ms-adv-modal__grid{
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .ms-adv-modal__image{
+    min-height: 0;
+    max-height: 190px;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .ms-adv-modal__image img{
+    max-height: 190px;
+    padding: 14px;
+  }
+
+  .ms-adv-modal__content{
+    padding: 24px 20px 20px;
+  }
+
+  .ms-adv-modal__content h3,
+  .ms-advantages .ms-adv-modal__content h3{
+    font-size: 20px !important;
+  }
+
+  .ms-adv-modal__content p{
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+
+  .ms-adv-modal__content ul{
+    gap: 8px;
+  }
+
+  .ms-adv-modal__footer{
+    gap: 12px;
+  }
+
+  .ms-advantages .ms-adv-brandPhrase{
+    display: inline;
+    white-space: normal;
+  }
+
+  .ms-advantages .ms-adv-brandWord{
+    white-space: nowrap;
+  }
+
+  .ms-adv-sectionHead,
+  .ms-adv-h1,
+  .ms-adv-h2,
+  .ms-adv-lead,
+  .ms-adv-sub{
+    max-width: 100% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ms-advantages *,
+  .ms-advantages *::before,
+  .ms-advantages *::after{
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   SEKCJA 2 — JAKOŚĆ / KARTY PRODUKTOWE
+   Styl zgodny z referencyjną sekcją produktów
+   ========================================================= */
+
+.ms-adv-productSection{
+  position: relative;
+  padding: clamp(72px, 8vw, 96px) 0;
+  overflow: hidden;
+  background: #fff
+}
+
+.ms-adv-productSection::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  width: 75vw;
+  height: 3px;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(85, 107, 0, .25) 15%,
+    rgba(85, 107, 0, .55) 50%,
+    rgba(85, 107, 0, .25) 85%,
+    transparent 100%
+  );
+}
+
+.ms-adv-productSection__head{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 44px;
+}
+
+.ms-adv-productSection__head > div:first-child{
+  max-width: 780px;
+}
+
+.ms-adv-productSection__lead{
+  max-width: 430px;
+  margin: 0 !important;
+  color: #000 !important;
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+}
+
+.ms-adv-productGallery{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+}
+
+.ms-adv-productGallery__item{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  min-height: 240px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #fff;
+  border-top: 5px solid #3f5600;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.ms-adv-productGallery__item-reversed {
+  display: grid;
+  grid-template-columns: 65% 35%;
+
+  position: relative;
+  overflow: hidden;
+
+  border: 0;
+  border-radius: 28px;
+  background: #fff;
+  border-top: 5px solid #3f5600;
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* duże dekoracyjne koło */
+.ms-adv-productGallery__item-reversed
+.ms-adv-productGallery__image-reversed::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 200px;
+  height: 75px;
+
+  right: 40px;
+  top: -10px;
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  background:#3f5600;
+
+  pointer-events: none;
+}
+
+/* KSZTAŁT NA DOLE */
+.ms-adv-productGallery__item-reversed::after {
+  content: "";
+
+  position: absolute;
+
+  width: 320px;
+  height: 90px;
+
+  right: 22%;
+  bottom: -55px;
+
+  border-radius: 50% 50% 45% 55% / 70% 65% 35% 30%;
+
+  background: #3f5600;
+
+  transform: rotate(-3deg);
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.ms-adv-productGallery__image {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 240px;
+
+  overflow: hidden;
+
+  padding: 0;
+  border: 0;
+
+  background: #fff;
+}
+
+.ms-adv-productGallery__image img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  cursor: pointer;
+
+  object-fit: fill;
+  object-position: center center;
+
+  border-radius: 0;
+
+  transition: transform .22s ease;
+}
+
+.ms-adv-productGallery__image img:hover{
+  transform: scale(1.05);
+}
+
+.ms-adv-productGallery__image-reversed {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 240px;
+
+  overflow: hidden;
+
+  padding: 0;
+  border: 0;
+
+  background: #fff;
+}
+
+.ms-adv-productGallery__image-reversed img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  cursor: pointer;
+
+  object-fit: contain;
+  object-position: center center;
+
+  border-radius: 0;
+
+  transition: transform .22s ease;
+}
+
+.ms-adv-productGallery__image-reversed img:hover{
+  transform: scale(1.05);
+}
+
+.ms-adv-productGallery__image:focus-visible{
+  position: relative;
+  z-index: 2;
+  outline: 3px solid rgba(85,107,0,.35);
+  outline-offset: -3px;
+}
+
+.ms-adv-productGallery__content{
+  display: grid;
+  grid-template-rows: 50px minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+}
+
+.ms-adv-productGallery__title{
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 10px 25px;
+}
+
+.ms-adv-productGallery__description{
+  min-width: 0;
+  padding: 0 26px 30px;
+}
+
+.ms-adv-productGallery__title h3,
+.ms-advantages .ms-adv-productGallery__title h3{
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--adv-text) !important;
+  font-size: 20px !important;
+  line-height: 1.25 !important;
+  font-weight: 850 !important;
+  letter-spacing: -.02em !important;
+  text-transform: none !important;
+}
+
+.ms-adv-productGallery__description p{
+  margin: 0 !important;
+  color: #6b7280 !important;
+  font-size: 14px !important;
+  line-height: 1.58 !important;
+}
+
+.ms-adv-productGallery__description ul{
+  margin: 0 !important;
+  padding-left: 0 !important;
+  color: #6b7280 !important;
+  list-style: none !important;
+}
+
+.ms-adv-productGallery__description li{
+  margin: 0 0 7px !important;
+  color: #6b7280 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 12px;
+}
+
+.ms-adv-productGallery__description li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 20px;
+    height: 20px;
+
+    background-color: var(--adv-brand);
+
+    /* tarcza z checkiem */
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' d='M12 3l7 3v5c0 4.6-2.9 8.3-7 10-4.1-1.7-7-5.4-7-10V6l7-3zM9 12l2 2 4-4'/%3E%3C/svg%3E") center / contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' d='M12 3l7 3v5c0 4.6-2.9 8.3-7 10-4.1-1.7-7-5.4-7-10V6l7-3zM9 12l2 2 4-4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.ms-adv-productGallery__description li:last-child{
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 700px){
+  .ms-adv-productSection{
+    padding: 64px 0;
+  }
+
+  .ms-adv-productSection__head{
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .ms-adv-productSection__lead{
+    max-width: 100%;
+    font-size: 14px !important;
+  }
+
+  .ms-adv-productGallery{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .ms-adv-productGallery__item{
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    min-height: 140px;
+    background-color: #fff;
+  }
+
+  .ms-adv-productGallery__image::before{
+    display: none !important;
+  }
+
+  .ms-adv-productGallery__item-reversed
+  .ms-adv-productGallery__image-reversed::before {
+    display: none !important;
+  }
+
+  .ms-adv-productGallery__item-reversed::after {
+    display: none !important;
+  }
+
+  .ms-adv-productGallery__image{
+    width: 100%;
+
+    height: auto;
+    min-height: 0;
+
+    align-self: start;
+
+    aspect-ratio: 1/1;
+
+    overflow: hidden;
+
+    background: #fff;
+  }
+
+  .ms-adv-productGallery__image img{
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    max-height: none;
+  }
+
+  .ms-adv-productGallery__content{
+    min-height: 140px;
+    grid-template-rows: 50px minmax(0, 1fr);
+  }
+
+  .ms-adv-productGallery__title{
+    padding: 10px 14px 6px;
+  }
+
+  .ms-adv-productGallery__description{
+    padding: 4px 14px 12px;
+  }
+
+  .ms-adv-productGallery__title h3,
+  .ms-advantages .ms-adv-productGallery__title h3{
+    font-size: 15px !important;
+  }
+
+  .ms-adv-productGallery__description p{
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .ms-adv-productGallery__description li::before {
+    top: 0px;
+    width: 17px;
+    height: 17px;
+  }
+
+  .ms-adv-productGallery__description li {
+    padding-left: 28px;
+  }
+}
+
+@media (max-width: 430px){
+  .ms-adv-productGallery__item{
+    grid-template-columns: 120px minmax(0, 1fr);
+    min-height: 120px;
+  }
+
+  .ms-adv-productGallery__image{
+    width: 120px;
+    height: 120px;
+  }
+
+  .ms-adv-productGallery__content{
+    height: 120px;
+    grid-template-rows: 44px minmax(0, 1fr);
+  }
+}
+
+/* =========================================================
+   LIGHTBOX — WSPÓLNY OVERLAY
+   ========================================================= */
+
+.ms-adv-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+  background: rgba(17, 24, 39, .86);
+  backdrop-filter: blur(5px);
+}
+
+.ms-adv-lightbox[hidden] {
+  display: none !important;
+}
+
+html.ms-adv-lightbox-open,
+body.ms-adv-lightbox-open {
+  overflow: hidden !important;
+}
+
+.ms-adv-lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
+
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+
+  background: #fff;
+  color: #111827;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ms-adv-lightbox__viewer {
+  display: flex;
+  flex-direction: column;
+
+  width: min(800px, 92vw);
+  max-height: 92vh;
+
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fff;
+
+  box-shadow: 0 25px 80px rgba(0, 0, 0, .38);
+}
+
+/* Zwykłe zdjęcie */
+.ms-adv-lightbox__img {
+  display: block;
+  max-width: min(1100px, 92vw);
+  max-height: 88vh;
+
+  padding: 20px;
+  border-radius: 24px;
+
+  background: #fff;
+  object-fit: contain;
+
+  box-shadow: 0 25px 80px rgba(0, 0, 0, .38);
+}
+
+.ms-adv-lightbox__img[hidden],
+.ms-adv-lightbox__keyshot[hidden] {
+  display: none !important;
+}
+
+/* =========================================================
+   LIGHTBOX — KEYSHOT XR / 3D
+   ========================================================= */
+
+.ms-adv-lightbox__keyshot {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #fff;
+}
+
+.ms-adv-lightbox__keyshot iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.ms-adv-lightbox__keyshotHeader {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 13px 64px 13px 18px;
+  border-bottom: 1px solid #e5e7eb;
+
+  background: #fff;
+  color: #111827;
+}
+
+.ms-adv-lightbox__keyshotHeader[hidden] {
+  display: none !important;
+}
+
+.ms-adv-lightbox__keyshotHand {
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+  background: rgba(85, 107, 0, .09);
+  color: var(--adv-brand-dark);
+}
+
+.ms-adv-lightbox__keyshotHeader strong {
+  display: block;
+  margin-bottom: 3px;
+
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 850;
+}
+
+.ms-adv-lightbox__instructionDesktop,
+.ms-adv-lightbox__instructionMobile {
+  display: block;
+
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.ms-adv-lightbox__instructionMobile {
+  display: none;
+}
+
+/* =========================================================
+   LIGHTBOX — DETALE / HOTSPOTY — DESKTOP
+   ========================================================= */
+
+/* Poszerzamy viewer automatycznie, gdy widoczny jest tryb detali. */
+.ms-adv-lightbox__viewer:has([data-ms-details-viewer]:not([hidden])),
+.ms-adv-lightbox__viewer.is-details {
+  width: min(1220px, 96vw);
+  max-width: 1220px;
+  max-height: 94vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ms-adv-details {
+  position: relative;
+
+  width: 100%;
+  max-width: 1180px;
+  max-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 32px 36px 22px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  border-radius: 28px;
+  background: #fff;
+}
+
+.ms-adv-details[hidden] {
+  display: none !important;
+}
+
+/* ---------- Nagłówek ---------- */
+
+.ms-adv-details__header {
+  flex: 0 0 auto;
+  padding: 0 0 22px;
+}
+
+.ms-adv-details__heading {
+  margin: 0 !important;
+
+  color: #111827 !important;
+  font-size: clamp(24px, 2.4vw, 36px) !important;
+  line-height: 1.1 !important;
+  font-weight: 850 !important;
+}
+
+.ms-adv-details__subtitle {
+  margin: 8px 0 0 !important;
+
+  color: #6b7280 !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+}
+
+/* ---------- Główny układ ---------- */
+
+.ms-adv-details__layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 28px;
+  align-items: stretch;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 520px;
+}
+
+/* ---------- Lista cech / ikony ---------- */
+
+.ms-adv-details__features {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.ms-adv-details__feature {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+
+  padding: 12px 12px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.ms-adv-details__feature:last-child {
+  border-bottom: 0;
+}
+
+.ms-adv-details__featureIcon {
+  width: 68px;
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ms-adv-details__featureIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.ms-adv-details__featureContent strong {
+  display: block;
+  margin-bottom: 4px;
+
+  color: #111827;
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.ms-adv-details__featureContent p {
+  margin: 0 !important;
+
+  color: #4b5563 !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+/* ---------- Zdjęcie główne ---------- */
+
+.ms-adv-details__stage {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  overflow: visible;
+  border-radius: 22px;
+
+  /* border: 1px solid #000; */
+}
+/* ---------- prawy górny kafelek ---------- */
+
+.ms-adv-details__woodBadge {
+  position: absolute;
+
+  top: 28px;
+  right: 34px;
+
+  z-index: 8;
+
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+
+  width: 250px;
+
+  padding: 14px 18px;
+
+  border: 1px solid rgba(85,107,0,.12);
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(245,247,235,.96),
+      rgba(238,242,221,.88)
+    );
+
+  box-shadow:
+    0 10px 28px rgba(17,24,39,.07);
+}
+
+
+.ms-adv-details__woodBadgeIcon {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: rgba(85,107,0,.08);
+
+  font-size: 22px;
+}
+
+
+.ms-adv-details__woodBadgeText strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #26320a;
+
+  font-size: 14px;
+  line-height: 1.2;
+
+  font-weight: 850;
+}
+
+
+.ms-adv-details__woodBadgeText span {
+  display: block;
+
+  color: #5f6b55;
+
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+
+/* ---------- dolny kafelek ---------- */
+
+.ms-adv-details__qualityNote {
+  display: grid;
+
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+
+  width: min(760px, 72%);
+
+  /* LEWY DOLNY RÓG */
+  margin:
+    18px
+    auto
+    0
+    0;
+
+  padding: 14px 18px;
+
+  border:
+    1px solid rgba(85,107,0,.12);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(246,248,238,.98),
+      rgba(241,245,228,.88)
+    );
+
+  box-shadow:
+    0 8px 24px rgba(17,24,39,.05);
+}
+
+/* =========================================================
+   KAFELEK JAKOŚCIOWY — DREWNO
+   ========================================================= */
+
+.ms-adv-details.is-wood .ms-adv-details__qualityNote {
+  background: linear-gradient(
+    135deg,
+    rgba(85, 107, 0, .08),
+    rgba(255, 255, 255, .92)
+  );
+
+  border-color: rgba(85, 107, 0, .18);
+}
+
+.ms-adv-details.is-wood .ms-adv-details__qualityNoteIcon {
+  color: #556b00;
+  border-color: #556b00;
+}
+
+
+/* =========================================================
+   KAFELEK JAKOŚCIOWY — ALUMINIUM
+   ========================================================= */
+
+.ms-adv-details.is-alu .ms-adv-details__qualityNote {
+  background: linear-gradient(
+    135deg,
+    rgba(72, 82, 94, .09),
+    rgba(255, 255, 255, .94)
+  );
+
+  border-color: rgba(72, 82, 94, .20);
+}
+
+.ms-adv-details.is-alu .ms-adv-details__qualityNoteIcon {
+  color: #59636f;
+  border-color: #59636f;
+}
+
+.ms-adv-details__qualityNoteIcon {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    2px solid var(--adv-brand-dark, #3f5600);
+
+  border-radius: 50%;
+
+  color:
+    var(--adv-brand-dark, #3f5600);
+
+  font-size: 18px;
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+
+.ms-adv-details__qualityNote p {
+  margin: 0 !important;
+
+  color: #4b5563 !important;
+
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+
+.ms-adv-details__qualityNote strong {
+  color: #26320a;
+
+  font-weight: 800;
+}
+
+/* ---------- Przyciemnienie + BLUR tła podczas zoomu ---------- */
+
+.ms-adv-details::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 20;
+
+  border-radius: inherit;
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .2s ease,
+    visibility .2s ease;
+}
+
+
+/* pokazujemy blur tylko gdy zoom jest aktywny */
+.ms-adv-details:has(.ms-adv-details__zoom.is-active)::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ms-adv-details__main {
+  position: absolute;
+  inset: 20px 10px;
+
+  display: block;
+
+  width: calc(100% - 20px);
+  height: calc(100% - 40px);
+  max-width: none;
+
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+}
+
+/* ---------- Hotspoty ---------- */
+
+/* left/top/width/height są ustawiane przez JS zgodnie z realnym obszarem
+   zdjęcia po zastosowaniu object-fit: contain. */
+.ms-adv-details__hotspots {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 0;
+  height: 0;
+
+  z-index: 50;
+  pointer-events: none;
+}
+
+.ms-adv-details__hotspot {
+  position: absolute;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+  transform: translate(-50%, -50%);
+
+  border: 3px solid #fff;
+  border-radius: 50%;
+
+  background: rgba(255, 0, 0, .86);
+  box-shadow:
+    0 0 0 7px rgba(255, 255, 255, .28),
+    0 6px 22px rgba(17, 24, 39, .38);
+
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease;
+}
+
+.ms-adv-details__hotspot:hover,
+.ms-adv-details__hotspot:focus-visible,
+.ms-adv-details__hotspot.is-active {
+  transform: translate(-50%, -50%) scale(1.18);
+  background: var(--adv-brand-dark, #3f5600);
+  box-shadow:
+    0 0 0 8px rgba(255, 255, 255, .38),
+    0 8px 28px rgba(17, 24, 39, .46);
+  outline: none;
+}
+
+/* ---------- Okrągłe zbliżenie ---------- */
+
+.ms-adv-details__zoom {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 20;
+
+  width: 75%;
+  max-width: 760px;
+  aspect-ratio: 1 / 1;
+
+  transform: translate(-50%, -50%) scale(.92);
+
+  overflow: hidden;
+  border: 7px solid rgba(255, 255, 255, .96);
+  border-radius: 50%;
+
+  background: #fff;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, .55),
+    0 0 0 9999px rgba(17, 24, 39, .75);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity .2s ease,
+    transform .2s ease,
+    visibility .2s ease;
+}
+
+.ms-adv-details__zoom.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.ms-adv-details__zoomImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ---------- Tekst aktywnego zbliżenia ---------- */
+
+.ms-adv-details__info {
+  position: absolute;
+
+  right: calc(87.5% + 20px);
+  top: 50%;
+
+  z-index: 30;
+
+  width: 400px;
+
+  transform: translateY(-50%);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .22s ease,
+    transform .22s ease,
+    visibility .22s ease;
+}
+
+.ms-adv-details__info.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%);
+}
+
+.ms-adv-details__infoTitle {
+  margin-bottom: 12px;
+
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.ms-adv-details__infoItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ms-adv-details__infoItem {
+  position: relative;
+  min-width: 400px;
+
+  padding: 12px 15px 12px 38px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, .95);
+  color: #26320a;
+
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 650;
+
+  box-shadow: 0 7px 22px rgba(0, 0, 0, .18);
+  pointer-events: none;
+}
+
+.ms-adv-details__infoItem::before {
+  content: "✓";
+
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 18px;
+  height: 18px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #556b00;
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 900;
+}
+
+/* ---------- Dolny panel ---------- */
+
+.ms-adv-details__footer {
+  width: 50%;
+  align-self: flex-end;
+
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+
+  margin-top: 18px;
+  padding: 17px 22px;
+
+  border: 1px solid rgba(85, 107, 0, .15);
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(85, 107, 0, .055),
+    rgba(85, 107, 0, .02)
+  );
+}
+
+.ms-adv-details__footerIcon {
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  border: 2px solid #556b00;
+  border-radius: 50%;
+
+  color: #556b00;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.ms-adv-details__footer strong {
+  display: block;
+  margin-bottom: 5px;
+
+  color: #111827;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.ms-adv-details__footer p {
+  margin: 0 !important;
+
+  color: #4b5563 !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+/* =========================================================
+   PODPOWIEDŹ — DÓŁ OBSZARU ZE ZDJĘCIEM
+   ========================================================= */
+
+.ms-adv-details__hint p{
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    z-index: 10;
+
+    width: max-content;
+    max-width: calc(100% - 32px);
+
+    margin: 0 !important;
+
+    transform: translateX(-50%);
+
+    color: #7b8492 !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+    text-align: center;
+
+    pointer-events: none;
+}
+
+.ms-adv-details__hint span {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .ms-adv-details__hint span{
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    z-index: 10;
+
+    width: max-content;
+    max-width: calc(100% - 32px);
+
+    margin: 0 !important;
+
+    transform: translateX(-50%);
+
+    color: #7b8492 !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+    text-align: center;
+
+    pointer-events: none;
+}
+
+.ms-adv-details__hint p {
+  display: none;
+}
+}
+
+
+
+/* =========================================================
+   LIGHTBOX — MOBILE
+   Założenia:
+   - modal ma własny pionowy scroll,
+   - zdjęcie NIE kurczy się przez liczbę cech,
+   - zdjęcie zajmuje pełną szerokość białego modala,
+   - hotspoty pozostają na zdjęciu,
+   - opis aktywnego hotspotu pojawia się pod zdjęciem,
+   - tło przy aktywnym zbliżeniu jest mocniej przyciemnione.
+   ========================================================= */
+
+/* =========================================================
+   DESKTOP — TŁO MODALA DREWNO
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  /* ---------------------------------------------------------
+     1. OVERLAY
+     --------------------------------------------------------- */
+
+  .ms-adv-lightbox {
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 70px 12px 16px;
+
+    /* Scroll ma być wewnątrz modala, nie na całej stronie. */
+    overflow: hidden;
+  }
+
+  .ms-adv-lightbox__close {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+
+    width: 42px;
+    height: 42px;
+
+    z-index: 2147483647;
+  }
+
+  .ms-adv-lightbox__instructionDesktop {
+    display: none;
+  }
+
+  .ms-adv-lightbox__instructionMobile {
+    display: block;
+  }
+
+
+  /* ---------------------------------------------------------
+     2. VIEWER
+     Viewer wypełnia dostępną wysokość ekranu.
+     --------------------------------------------------------- */
+
+  .ms-adv-lightbox__viewer:has([data-ms-details-viewer]:not([hidden])),
+  .ms-adv-lightbox__viewer.is-details {
+    width: 100%;
+    max-width: none;
+
+    height: calc(100dvh - 86px);
+    max-height: calc(100dvh - 86px);
+    min-height: 0;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+
+    overflow: hidden;
+    background: transparent;
+    box-shadow: none;
+  }
+
+
+  /* ---------------------------------------------------------
+     3. BIAŁY MODAL — TO JEST ELEMENT PRZEWIJANY
+     --------------------------------------------------------- */
+
+  .ms-adv-details {
+    width: 100%;
+    max-width: none;
+
+    height: 100%;
+    max-height: 100%;
+    min-height: 0;
+
+    display: block;
+
+    padding: 22px 16px 20px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+
+    border-radius: 24px;
+  }
+
+  .ms-adv-details__header {
+    padding-bottom: 18px;
+  }
+
+  .ms-adv-details__heading {
+    font-size: clamp(21px, 6vw, 28px) !important;
+  }
+
+  .ms-adv-details__subtitle {
+    font-size: 13px !important;
+  }
+
+  .ms-adv-details__woodBadge {
+    position: static;
+    width: 100%;
+    margin: 10px 0 16px;
+    border-radius: 16px;
+  }
+
+  .ms-adv-details__qualityNote {
+    width: 100%;
+    margin-top: 16px;
+    grid-template-columns: 38px minmax(0, 1fr);
+    padding: 13px 14px;
+  }
+
+
+  /* ---------------------------------------------------------
+     4. UKŁAD — PIONOWY
+     --------------------------------------------------------- */
+
+  .ms-adv-details__layout {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    gap: 18px;
+  }
+
+
+  /* ---------------------------------------------------------
+     5. ZDJĘCIE
+
+     Pełna szerokość białego modala.
+     Ujemne marginesy kasują boczny padding 16px modala.
+     Kwadrat NIE może się kurczyć przez flexbox.
+     --------------------------------------------------------- */
+
+  .ms-adv-details__stage {
+    order: 1;
+
+    position: relative;
+
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+
+    flex: 0 0 auto;
+
+    overflow: visible;
+  }
+
+
+  .ms-adv-details__main {
+    position: relative;
+
+    inset: auto;
+
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-width: none;
+    max-height: none;
+
+    object-fit: initial;
+    object-position: initial;
+
+    background: transparent;
+  }
+
+
+  /* ---------------------------------------------------------
+     6. HOTSPOTY
+     Ich left/top/width/height nadal ustawia JS.
+     --------------------------------------------------------- */
+
+  .ms-adv-details__hotspots {
+    position: absolute;
+
+    z-index: 10;
+
+    pointer-events: none;
+  }
+
+  .ms-adv-details__hotspot {
+    width: 32px;
+    height: 32px;
+
+    border-width: 2px;
+
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+
+  /* ---------------------------------------------------------
+     7. OKRĄGŁE ZBLIŻENIE
+     --------------------------------------------------------- */
+
+  .ms-adv-details__zoom {
+    width: 82%;
+    max-width: 380px;
+
+    top: 50%;
+
+    border-width: 4px;
+
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, .58),
+      0 0 0 9999px rgba(17, 24, 39, .68);
+  }
+
+
+  /* ---------------------------------------------------------
+     8. OPIS AKTYWNEGO HOTSPOTU — POD ZDJĘCIEM
+     --------------------------------------------------------- */
+
+  .ms-adv-details__info {
+    left: 50%;
+    right: auto;
+
+    top: calc(100% + 12px);
+    bottom: auto;
+
+    width: calc(100% - 24px);
+    max-width: none;
+
+    transform: translateX(-50%) translateY(8px);
+
+    pointer-events: none;
+  }
+
+  .ms-adv-details__info.is-active {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Rezerwujemy miejsce pod dynamiczny opis, aby lista cech
+     zaczynała się dopiero pod nim. */
+  .ms-adv-details__stage:has(.ms-adv-details__info.is-active) {
+    margin-bottom: 190px;
+  }
+
+  .ms-adv-details__infoTitle {
+    margin-bottom: 7px;
+
+    color: #fff;
+    font-size: 15px;
+  }
+
+  .ms-adv-details__infoItems {
+    gap: 7px;
+  }
+
+  .ms-adv-details__infoItem {
+    width: 100%;
+
+    padding: 10px 12px 10px 36px;
+    border-radius: 12px;
+
+    font-size: 12px;
+    line-height: 1.35;
+
+    box-shadow: 0 5px 16px rgba(0, 0, 0, .20);
+  }
+
+
+  /* ---------------------------------------------------------
+     9. CECHY — POD ZDJĘCIEM
+
+     Dowolna liczba cech zwiększa wysokość zawartości modala,
+     dzięki czemu pojawia się pionowy scroll. Nie zmienia to
+     wysokości zdjęcia.
+     --------------------------------------------------------- */
+
+  .ms-adv-details__features {
+    order: 2;
+
+    width: 100%;
+    flex: 0 0 auto;
+
+    justify-content: flex-start;
+  }
+
+  .ms-adv-details__feature {
+    width: 100%;
+
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 12px;
+
+    padding: 10px 0;
+  }
+
+  .ms-adv-details__featureIcon {
+    width: 52px;
+    height: 52px;
+  }
+
+
+  /* ---------------------------------------------------------
+     10. DOLNY PANEL
+     --------------------------------------------------------- */
+
+  .ms-adv-details__footer {
+    width: 100%;
+
+    margin-top: 18px;
+    padding: 14px;
+
+    grid-template-columns: 54px minmax(0, 1fr);
+  }
+
+  .ms-adv-details__footerIcon {
+    width: 46px;
+    height: 46px;
+  }
+
+
+  /* ---------------------------------------------------------
+     11. PODPOWIEDŹ
+     --------------------------------------------------------- */
+
+  .ms-adv-details__hint {
+    margin: 14px 0 0 !important;
+    padding-bottom: 4px !important;
+  }
+
+  .ms-adv-details__hint > span {
+    display: inline;
+  }
+}
+
+/* =========================================================
+   ETYKIETA 3D NA KAFELKU
+   pojawia się TYLKO jeśli istnieje data-keyshot-url
+   ========================================================= */
+
+.ms-adv-productGallery__image[data-keyshot-url]::after {
+  content: "Zobacz model 3D";
+
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 10%;
+  max-height: 54px;
+
+  padding: 10px;
+  border-radius: 25px;
+
+  background: #000;
+  color: #fff;
+
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif) !important;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+
+  letter-spacing: .01em;
+
+  pointer-events: none;
+
+  transition:
+    background .2s ease,
+    color .2s ease;
+}
+
+/* =========================================================
+   3D — BIAŁY BŁYSK BEZ WIDOCZNEGO RESETU
+   ========================================================= */
+
+.ms-adv-productGallery__image[data-keyshot-url]::after {
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(255,255,255,.08) 44%,
+      rgba(255,255,255,.28) 50%,
+      rgba(255,255,255,.08) 56%,
+      transparent 60%,
+      transparent 100%
+    ),
+    #000;
+
+  background-repeat: no-repeat;
+
+  background-size:
+    65px 100%,
+    auto;
+
+  /* start całkowicie poza lewą stroną */
+  background-position:
+    -80px 0,
+    center;
+
+  animation:
+    msAdv3DShine 4s linear infinite;
+}
+
+@media (max-width: 700px) {
+  .ms-adv-productGallery__image[data-keyshot-url]::after {
+    content: "Zobacz 3D";
+    font-size: 10px;
+    width: 100%;
+    height: 10px;
+    padding: 6px;
+    bottom: 0;
+    left: -6px;
+    border-radius: 0;
+  }
+
+  .ms-adv-productGallery__image[data-keyshot-url]::after,
+  .ms-adv-productGallery__image-reversed[data-ms-details]::after {
+    animation: none;
+    background: #000;
+  }
+}
+
+.ms-adv-productGallery__image-reversed[data-ms-details]::after {
+  content: "Kliknij i zobacz detale z bliska";
+
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 10%;
+  max-height: 54px;
+
+  padding: 10px;
+  border-radius: 25px;
+
+  background: #000;
+  color: #fff;
+
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif) !important;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+
+  letter-spacing: .01em;
+
+  pointer-events: none;
+
+  transition:
+    background .2s ease,
+    color .2s ease;
+}
+
+@media (max-width: 700px) {
+.ms-adv-productGallery__image-reversed[data-ms-details]::after {
+  content: "Zobacz detale z bliska";
+  font-size: 10px;
+  width: 100%;
+  height: 10px;
+  padding: 6px;
+  bottom: 0;
+  left: -6px;
+  border-radius: 0;
+}
+}
+
+.ms-adv-heroSlider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #fff;
+}
+
+.ms-adv-heroSlide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ms-adv-heroSlide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ms-adv-heroSlide img,
+.ms-adv-heroSlide video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* BIAŁA WARSTWA PRZEJŚCIA */
+.ms-adv-heroFade {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+
+  background: #fff;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity .65s ease;
+}
+
+.ms-adv-heroFade.is-visible {
+  opacity: 1;
+}
+
+/* =========================================================
+   HERO — SLIDER PORÓWNANIA DREWNO / ALUMINIUM
+   ========================================================= */
+
+[data-ms-compare-slider] {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  /* tło całej ramki */
+  background:
+    url("src/tlo-slidera.webp")
+    center / cover
+    no-repeat;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LINKI DREWNO / ALUMINIUM
+   ========================================================= */
+
+.ms-adv-compareSlider__links {
+  position: absolute;
+
+  top: 12px;
+  left: 18px;
+  right: 18px;
+
+  z-index: 30;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  pointer-events: none;
+}
+
+
+.ms-adv-compareSlider__link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 32px;
+
+  padding: 0 16px;
+
+  border-radius: 999px;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 800;
+
+  box-shadow:
+    0 5px 14px rgba(0,0,0,.12);
+
+  pointer-events: auto;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+
+.ms-adv-compareSlider__link:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.18);
+}
+
+
+.ms-adv-compareSlider__link--wood {
+  background: #556b00;
+}
+
+
+.ms-adv-compareSlider__link--alu {
+  background: #68717b;
+}
+
+/* =========================================================
+   WARSTWY — HOTSPOTY / ZOOM / OPIS
+   ========================================================= */
+
+/* główne zdjęcie */
+.ms-adv-details__main {
+  z-index: 1;
+}
+
+
+/* hotspoty są nad głównym zdjęciem */
+.ms-adv-details__hotspots {
+  z-index: 10;
+}
+
+
+/* okrągłe zbliżenie MUSI przykrywać hotspoty */
+.ms-adv-details__zoom {
+  z-index: 30;
+
+  /*
+    bardzo ważne:
+    zoom nie przejmuje kursora,
+    więc hover hotspotu nadal działa
+  */
+  pointer-events: none;
+}
+
+
+/* tekst dotyczący zbliżenia jeszcze wyżej */
+.ms-adv-details__info {
+  z-index: 40;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   PORÓWNANIE JAKOŚCI — JEDEN KAFELEK
+   ========================================================= */
+
+.ms-adv-compare {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.ms-adv-compare__grid{
+  margin-top: 20px;
+}
+
+.ms-adv-compareCard {
+  overflow: hidden;
+  border-radius: 26px;
+  background: #fff;
+  border: 1px solid rgba(17, 24, 39, .08);
+  box-shadow: 0 14px 40px rgba(17, 24, 39, .10);
+  margin-bottom: 10px;
+}
+
+/* ---------- ZDJĘCIA ---------- */
+
+.ms-adv-compareCard__images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  background: #fff;
+}
+
+.ms-adv-compareCard__side {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+}
+
+.ms-adv-compareCard__side img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  transition: 0.5s ease;
+}
+
+.ms-adv-compareCard__side img:hover {
+  transform: scale(1.5);
+}
+
+/* =========================================================
+   OZNACZENIA ✓ / ✕ NA ZDJĘCIACH PORÓWNAWCZYCH
+   ========================================================= */
+
+/* wspólny wygląd kółka */
+.ms-adv-compareCard__side::after {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+
+  z-index: 5;
+
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: #fff;
+
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 900;
+
+  box-shadow: 0 5px 14px rgba(0, 0, 0, .18);
+
+  pointer-events: none;
+}
+
+
+/* MENTOR — zielony check */
+.ms-adv-compareCard__side:has(
+  .ms-adv-compareCard__badge--mentor
+)::after {
+  content: "✓";
+  background: #556b00;
+  border: 3px solid white;
+}
+
+
+/* KONKURENCJA — czerwony X */
+.ms-adv-compareCard__side:has(
+  .ms-adv-compareCard__badge--competition
+)::after {
+  content: "X";
+  background: #c62828;
+  border: 3px solid white;
+}
+
+
+/* ---------- ETYKIETY ---------- */
+
+.ms-adv-compareCard__badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+
+  padding: 7px 15px;
+
+  border-radius: 999px;
+
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 850;
+
+  box-shadow: 0 5px 16px rgba(0, 0, 0, .15);
+}
+
+.ms-adv-compareCard__badge--mentor {
+  background: #556b00;
+  border: 3px solid white;
+}
+
+.ms-adv-compareCard__badge--competition {
+  background: #c62828;
+  border: 3px solid white;
+}
+
+
+/* ---------- WSPÓLNY OPIS ---------- */
+
+.ms-adv-compareCard__content {
+  padding: 22px 26px 24px;
+  text-align: center;
+}
+
+.ms-adv-compareCard__content strong {
+  display: block;
+  margin-bottom: 7px;
+
+  color: #111827;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 850;
+}
+
+.ms-adv-compareCard__content span {
+  display: block;
+  margin: 0 auto;
+
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+  .ms-adv-compareCard__images {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .ms-adv-compareCard__side {
+    height: 260px;
+  }
+
+  .ms-adv-compareCard__content {
+    padding: 18px 18px 20px;
+  }
+
+  .ms-adv-compareCard__content strong {
+    font-size: 16px;
+  }
+
+  .ms-adv-compareCard__content span {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   BOCZNA NAWIGACJA SEKCJI — DESKTOP
+   ========================================================= */
+
+.ms-adv-sideNav {
+  position: fixed;
+
+  left: 26px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  z-index: 500;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+
+  padding: 10px 0;
+}
+
+
+/* pionowa linia */
+
+.ms-adv-sideNav__track {
+  position: absolute;
+
+  left: 7px;
+  top: 18px;
+  bottom: 18px;
+
+  width: 2px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: rgba(17, 24, 39, .13);
+}
+
+
+/* zielony postęp */
+
+.ms-adv-sideNav__progress {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 0;
+
+  border-radius: inherit;
+
+  background: var(--adv-brand-dark, #556b00);
+
+  transition: height .45s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* pojedynczy punkt */
+
+.ms-adv-sideNav__item {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 16px;
+
+  color: #374151;
+
+  text-decoration: none;
+}
+
+
+/* kropka */
+
+.ms-adv-sideNav__dot {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  width: 16px;
+  height: 16px;
+
+  border: 3px solid #fff;
+  border-radius: 50%;
+
+  background: #c9cdd2;
+
+  box-shadow:
+    0 0 0 1px rgba(17,24,39,.12);
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+}
+
+
+/* napis */
+
+.ms-adv-sideNav__label {
+  position: absolute;
+
+  left: 28px;
+  top: 50%;
+
+  transform:
+    translateY(-50%)
+    translateX(-6px);
+
+  width: max-content;
+  max-width: 170px;
+
+  padding: 7px 11px;
+
+  border: 1px solid rgba(17,24,39,.08);
+  border-radius: 9px;
+
+  background: rgba(255,255,255,.94);
+
+  color: #374151;
+
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 750;
+
+  box-shadow:
+    0 6px 20px rgba(17,24,39,.10);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .2s ease,
+    transform .2s ease,
+    visibility .2s ease;
+}
+
+
+/* hover */
+
+.ms-adv-sideNav__item:hover .ms-adv-sideNav__label {
+  opacity: 1;
+  visibility: visible;
+
+  transform:
+    translateY(-50%)
+    translateX(0);
+}
+
+
+/* =========================================================
+   AKTYWNA SEKCJA
+   ========================================================= */
+
+.ms-adv-sideNav__item.is-active .ms-adv-sideNav__dot {
+  transform: scale(1.35);
+
+  background: var(--adv-brand-dark, #556b00);
+
+  box-shadow:
+    0 0 0 5px rgba(85,107,0,.14),
+    0 3px 12px rgba(17,24,39,.18);
+}
+
+
+.ms-adv-sideNav__item.is-active .ms-adv-sideNav__label {
+  opacity: 1;
+  visibility: visible;
+
+  transform:
+    translateY(-50%)
+    translateX(0);
+
+  color: var(--adv-brand-dark, #556b00);
+
+  font-weight: 850;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 1600px) {
+
+  .ms-adv-sideNav {
+    display: none !important;
+  }
+
+}
+
+
+/* =========================================================
+   HERO — PORÓWNANIE DREWNO / ALUMINIUM
+   ========================================================= */
+
+.ms-adv-compareSlider {
+  position: relative;
+
+  width: min(100%, 660px);
+  aspect-ratio: 1/1;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background: #fff;
+
+  box-shadow:
+    0 22px 60px rgba(17, 24, 39, .14);
+
+  cursor: ew-resize;
+
+  user-select: none;
+  touch-action: none;
+}
+
+
+/* wspólny obraz */
+.ms-adv-compareSlider__image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  pointer-events: none;
+}
+
+
+/* warstwa bazowa */
+.ms-adv-compareSlider__image--base {
+  top: 58px;
+  bottom: 0;
+
+  height: calc(100% - 58px);
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  z-index: 1;
+}
+
+
+/* warstwa drewna */
+.ms-adv-compareSlider__overlay {
+  position: absolute;
+
+  left: 0;
+  top: 58px;
+  bottom: 0;
+
+  width: 50%;
+
+  z-index: 2;
+
+  overflow: hidden;
+}
+
+
+/*
+WAŻNE:
+obraz wewnątrz overlay musi zachować
+pełną szerokość całego slidera
+*/
+
+.ms-adv-compareSlider__overlay .ms-adv-compareSlider__image {
+  width: var(--ms-compare-width, 660px);
+  max-width: none;
+}
+
+
+/* pionowa linia */
+
+.ms-adv-compareSlider__divider {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+  bottom: 0;
+
+  z-index: 5;
+
+  width: 3px;
+
+  transform: translateX(-50%);
+
+  background: rgba(255,255,255);
+
+  box-shadow:
+    0 0 0 1px rgba(17,24,39,.10),
+    0 0 16px rgba(17,24,39,.20);
+
+  pointer-events: none;
+}
+
+
+/* uchwyt */
+
+.ms-adv-compareSlider__handle {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 54px;
+  height: 54px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  border: 3px solid #fff;
+  border-radius: 50%;
+
+  background: var(--adv-brand-dark, #3f5600);
+
+  color: #fff;
+
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 24px rgba(17,24,39,.25);
+
+  pointer-events: none;
+}
+
+
+/* etykiety */
+
+.ms-adv-compareSlider__label {
+  position: absolute;
+
+  top: 18px;
+
+  z-index: 7;
+
+  padding: 8px 13px;
+
+  border-radius: 999px;
+
+  color: #fff;
+
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 850;
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    0 5px 16px rgba(17,24,39,.16);
+
+  pointer-events: none;
+}
+
+
+.ms-adv-compareSlider__label--left {
+  left: 18px;
+
+  background:
+    rgba(63,86,0,.88);
+}
+
+
+.ms-adv-compareSlider__label--right {
+  right: 18px;
+
+  background:
+    rgba(75,85,99,.88);
+}
+
+
+
+/* =========================================================
+   GLOBALNA TYPOGRAFIA NAGŁÓWKÓW SEKCJI
+   Wszystkie sekcje mają identyczny eyebrow + H2
+   ========================================================= */
+
+
+/* EYEBROW */
+.ms-advantages .ms-adv-eyebrow,
+.ms-advantages .ms-adv-eyebrow-white {
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif) !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  font-weight: 850 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+}
+
+
+/* zwykły eyebrow */
+.ms-advantages .ms-adv-eyebrow {
+  color: var(--adv-brand-dark) !important;
+}
+
+
+/* biały eyebrow */
+.ms-advantages .ms-adv-eyebrow-white {
+  color: #fff !important;
+}
+
+
+/* H2 */
+.ms-advantages .ms-adv-h2,
+.ms-advantages h2.ms-adv-h2,
+.ms-advantages .ms-adv-h2-white {
+  margin: 0 !important;
+
+  font-family: var(--ms-font-sans, "Exo 2", system-ui, sans-serif) !important;
+  font-size: clamp(25px, 3vw, 42px) !important;
+  line-height: 1.12 !important;
+  font-weight: 850 !important;
+  letter-spacing: -.035em !important;
+}
+
+
+/* zwykły H2 */
+.ms-advantages .ms-adv-h2,
+.ms-advantages h2.ms-adv-h2 {
+  color: var(--adv-text) !important;
+}
+
+
+/* biały H2 */
+.ms-advantages .ms-adv-h2-white {
+  color: #fff !important;
+}
+

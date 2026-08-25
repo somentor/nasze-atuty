@@ -1,0 +1,10 @@
+{
+    "horizontalFrames": 60,
+    "horizontalStartingIndex": 30,
+    "horizontalWrap": true,
+    "name": "tabliczka",
+    "type": "KeyShotXR",
+    "verticalFrames": 1,
+    "verticalStartingIndex": 0,
+    "verticalWrap": false
+}
