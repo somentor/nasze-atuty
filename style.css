@@ -3534,8 +3534,8 @@ body.ms-adv-lightbox-open {
   display: block;
 
   position: absolute;
-  right: 32px;
-  top: 32px;
+  right: 16px;
+  top: 16px;
   z-index: 20;
 
   width: 300px;
@@ -3570,7 +3570,7 @@ body.ms-adv-lightbox-open {
 }
 
 .ms-mediaFrame--crop {
-  --ms-media-zoom: 1.45;
+  --ms-media-zoom: 1.22;
 }
 
 .ms-mediaFrame--crop iframe {
