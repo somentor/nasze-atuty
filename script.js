@@ -175,20 +175,29 @@
           image: "src/detale/drewno/tabliczki.png",
           alt: "Detale tabliczek",
           texts: [
-            "Tuleje dystansowe zapewniają równy i precyzyjny odstęp od konstrukcji oraz pomiędzy obrotowymi elementami",
-            "Obracane tabliczki zamontowane w sposób uniemożliwiający przypadkowe skaleczenie",
+            "Tuleje dystansowe zapewniają równe i precyzyjne odstępy pomiędzy elementami obrotowymi wymagane normą",
+            "Obracane tabliczki zamontowane w sposób uniemożliwiający przypadkowe skaleczenie lub zakleszczenie",
             "Dyskretny i estetyczny sposób montażu bez widocznych elementów mocujących"
+          ]
+        },
+        {
+          x: 40,
+          y: 51,
+          image: "src/detale/drewno/blat.png",
+          alt: "Detale blatu ławostołu",
+          texts: [
+            "Edukacyjny blat ławostołu wkomponowany w drewnianą ramę wraz z zawiniętym fartuchem - podniesiony próg bezpieczeństwa",
+            "Druk bezpośrednio w nośnik - litą blachę aluminiową - uniemożliwia usunięcie grafiki jak naklejki",
+            "Powierzchnia stołu dodatkowo zabezpieczona lakierem ogniotrwałym dającym efekt tafli szkła"
           ]
         },
         {
           x: 64,
           y: 55,
           image: "src/detale/drewno/naroznik.png",
-          alt: "Detale blatu ławostołu",
+          alt: "Detale narożnika ławostołu",
           texts: [
             "Starannie zaoblone krawędzie zwiększają bezpieczeństwo użytkowania",
-            "Tablica edukacyjna estetycznie wkomponowana w drewnianą ramę",
-            "Druk bezpośrednio w nośnik zabezpieczony lakierem dającym efekt tafli szkła",
             "Precyzyjnie spasowane połączenia drewnianych elementów"
           ]
         },
@@ -199,9 +208,9 @@
           alt: "Detale siedziska",
           texts: [
             "Starannie zaoblone narożniki eliminują ostre krawędzie",
-            "Masywne drewniane siedzisko zapewnia trwałość i stabilnosć konstrukcji",
-            "Precyzyjnie wyprofilowane zakończenia desek siedzisk",
-            "Gładko wykończona powierzchnia podkreśla staranność wykonania"
+            "Masywne drewniane siedzisko zapewnia trwałość i stabilność konstrukcji",
+            "Dokładnie wyprofilowane zakończenia desek siedzisk gwarantują wysokie bezpieczeństwo",
+            "Gładko wykończona powierzchnia podkreśla staranność wykonania i pozwala na wyeliminowanie skaleczeń"
           ]
         }
 
@@ -214,9 +223,9 @@
           image: "src/detale/alu/labirynt.png",
           alt: "Detale labiryntu",
           texts: [
-            "Precyzyjnie wykonane prowadnice zapewniają płynny ruch elementów",
+            "Precyzyjnie wykonane prowadnice zapewniają płynny ruch elementów interaktywnych",
             "Monolityczne kółka bez widocznych łączeń i elementów montażowych",
-            "Starannie wykończone i zaoblone krawędzie ruchomych kółek"
+            "Kółka wykonane z materiałów o dużej odporności na ścieranie"
           ]
         },
         {
@@ -225,9 +234,9 @@
           image: "src/detale/alu/tabliczki.png",
           alt: "Detale tabliczek",
           texts: [
-            "Tuleje dystansowe zapewniają równy odstęp między obrotowymi elementami",
-            "Tabliczki bezpiecznie osadzone w profilowanej, estetycznej ramie",
-            "Zaoblone profile eliminują ostre i wystające krawędzie"
+            "Tuleje dystansowe zapewniają równe i precyzyjne odstępy pomiędzy elementami obrotowymi wymagane normą",
+            "Tabliczki obrotowe bezpiecznie osadzone w profilowanej, estetycznej ramie",
+            "Zaoblone profile aluminiowe malowane proszkowo eliminują ostre i wystające krawędzie"
           ]
         },
         {
@@ -238,7 +247,7 @@
           texts: [
             "Mocowania zlicowane z powierzchnią konstrukcji",
             "Profile ramowe zabezpieczają krawędzie tablicy",
-            "Precyzyjnie spasowane połączenia profili"
+            "Dokładnie spasowane połączenia profili"
           ]
         },
         {
@@ -248,8 +257,8 @@
           alt: "Detale blatu",
           texts: [
             "Precyzyjnie osadzony blat w ramę ławostołu, tworzący stabilną konstrukcję",
-            "Czterostronnie zagięte krawędzie blatu zabezpieczone w profilowanej ramie",
-            "Druk bezpośrednio w nośnik zabezpieczony lakierem dającym efekt tafli szkła",
+            "Czterostronnie zagięte krawędzie blatu wpuszczone w profilowaną ramę stołu",
+            "Druk bezpośrednio w nośnik - litą blachę aluminiową - uniemożliwia usunięcie grafiki jak naklejki",
           ]
         },
         {
@@ -258,9 +267,9 @@
           image: "src/detale/alu/totem.png",
           alt: "Detale Totemu",
           texts: [
-            "Precyzyjnie spasowane połączenia profili",
-            "Estetyczne zaślepki dyskretnie maskują elementy montażowe",
-            "Równe szczeliny podkreślają dokładność wykonania"
+            "Idealnie spasowane połączenia profili",
+            "Estetyczne zaślepki dyskretnie maskujące elementy montażowe",
+            "Równe łączenia podkreślają dokładność wykonania"
           ]
         },
         {
@@ -270,7 +279,7 @@
           alt: "Detale drzwi Totem",
           texts: [
             "Estetycznie zamontowany mechanizm zamykający",
-            "Precyzyjnie osadzone zadrukowane ścianki bez widocznych elementów montażowych",
+            "Zadrukowane ścianki osadzone bez widocznych elementów montażowych",
             "Równe szczeliny świadczą o dokładnym spasowaniu elementów"
           ]
         }
@@ -280,26 +289,26 @@
 
   alu: {
     title: "Konstrukcje aluminiowe PREMIUM",
-    subtitle: "Trwałość, funkcjonalność i bezpieczeństwo na lata",
-    qualityText: "Nasze konstrukcje aluminiowe łączą <strong>precyzję wykonania, trwałość, bezpieczeństwo i nowoczesne technologie.</strong>",
+    subtitle: "Nasze konstrukcje aluminiowe łączą precyzję wykonania, trwałość, bezpieczeństwo i nowoczesne technologie.",
+    qualityText: "",
 
     features: [
       {
-        icon: "src/ikony/brak_wystajacych_nitow.webp",
-        title: "Płaska powierzchnia",
-        text: "Brak ostrych i wystających elementów, zapewniające większe bezpieczeństwo użytkowników."
+        icon: "src/ikony/malowanie_proszkowe.webp",
+        title: "Malowanie proszkowe",
+        text: "Wszystkie konstrukcje aluminiowe są malowane proszkowo w kolorze RAL 7012 (standard)."
       },
 
       {
-        icon: "src/ikony/odpornosc_chemiczna.webp",
-        title: "Odporność chemiczna",
-        text: "Powierzchnie odporne na działanie substancji zewnętrznych."
+        icon: "src/ikony/odpornosc_atmosferyczna.webp",
+        title: "Odporność w plenerze",
+        text: "Konstrukcje są odporne na działania zmiennych warunków atmosferycznych."
       },
 
       {
         icon: "src/ikony/odpornosc_mechaniczna.webp",
         title: "Odporność mechaniczna",
-        text: "Odporność powierzchni na zarysowania i codzienne użytkowanie."
+        text: "Odporność powierzchni graficznych na zarysowania i codzienne użytkowanie."
       },
 
       {
@@ -311,44 +320,44 @@
       {
         icon: "src/ikony/odpornosc_na_ogien.webp",
         title: "Odporność na ogień",
-        text: "Wybrane technologie z potwierdzoną klasą reakcji na ogień A2-s1,d0."
+        text: "Stosujemy technologie w zakresie niepalności nadruków graficznych."
       },
 
       {
-        icon: "src/ikony/5_lat_gwarancji.png",
+        icon: "src/ikony/gwarancja.webp",
         title: "Do 5 lat gwarancji",
-        text: "Gwarancja producenta zapewnia spokój, bezpieczeństwo i pewność wysokiej jakości produktu."
+        text: "Gwarancja producenta zapewnia wysoką jakość i trwałość naszych urządzeń."
       },
 
+      {
+        icon: "src/ikony/norma_pca.webp",
+        title: "Normy i certyfikacja",
+        text: "Wykonujemy konstrukcje, które posiadają certyfikat zgodności z normą PN-EN 1176-1+A1:2024-03, wydany przez niezależną jednostkę certyfikującą, akredytowaną przez Polskie Centrum Akredytacji (PCA)."
+      }
+
     ],
-    footerTitle: "Jakość, która ma znaczenie",
-    footerText: "Każdy element konstrukcji został zaprojektowany z myślą o wieloletniej eksploatacji w przestrzeni publicznej."
+    footerTitle: "",
+    footerText: ""
 
   },
 
   drewno: {
 
-    title: "Drewniane konstrukcje PREMIUM",
-    subtitle: "Naturalny materiał, trwałość i dopracowane detale",
-    qualityText: "Nasze konstrukcje łączą w sobie <strong>naturalne piękno drewna, nowoczesne technologie i najwyższe standardy jakości.</strong>",
+    title: "Drewniane konstrukcje Mentor",
+    subtitle: "Nasze konstrukcje łączą w sobie naturalne piękno drewna, nowoczesne technologie i najwyższe standardy jakości.",
+    qualityText: "",
 
     features: [
       {
-        icon: "src/ikony/drewno_certyfikat.png",
+        icon: "src/ikony/drewno_certyfikat.webp",
         title: "Drewno z certyfikatem",
-        text: "Elementy wykonane z wysokiej jakości drewna do zastosowań zewnętrznych."
+        text: "Elementy wykonane z wysokiej jakości drewna pochodzącego z certyfikowanych, odpowiedzialnie zarzadzanych źródeł - FSC® lub PEFC."
       },
 
       {
         icon: "src/ikony/odpornosc_atmosferyczna.webp",
         title: "Zabezpieczenie powierzchni",
-        text: "Ochrona drewna przed warunkami atmosferycznymi."
-      },
-
-      {
-        icon: "src/ikony/odpornosc_mechaniczna.webp",
-        title: "Odporność mechaniczna",
-        text: "Odporność powierzchni na zarysowania i codzienne użytkowanie."
+        text: "Ochrona drewna przed zmiennymi warunkami atmosferycznymi - solidna impregnacja zewnętrzna lub ciśnieniowa."
       },
 
       {
@@ -358,16 +367,28 @@
       },
 
       {
-        icon: "src/ikony/5_lat_gwarancji.png",
-        title: "Do 5 lat gwarancji",
-        text: "Gwarancja producenta zapewnia spokój, bezpieczeństwo i pewność wysokiej jakości produktu."
+        icon: "src/ikony/odpornosc_mechaniczna.webp",
+        title: "Odporność mechaniczna",
+        text: "Odporność powierzchni graficznych na zarysowania i codzienne użytkowanie."
       },
+
+      {
+        icon: "src/ikony/gwarancja.webp",
+        title: "Do 5 lat gwarancji",
+        text: "Gwarancja producenta zapewnia wysoką jakość i trwałość naszych urządzeń."
+      },
+
+      {
+        icon: "src/ikony/norma_pca.webp",
+        title: "Normy i certyfikacja",
+        text: "Wykonujemy konstrukcje, które posiadają certyfikat zgodności z normą PN-EN 1176-1+A1:2024-03, wydany przez niezależną jednostkę certyfikującą, akredytowaną przez Polskie Centrum Akredytacji (PCA)."
+      }
 
 
     ],
 
-    footerTitle: "Naturalność połączona z trwałością",
-    footerText: "Konstrukcja została zaprojektowana do wieloletniej pracy w przestrzeni zewnętrznej."
+    footerTitle: "",
+    footerText: ""
 
   }
 

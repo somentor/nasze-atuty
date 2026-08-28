@@ -2862,7 +2862,7 @@ body.ms-adv-lightbox-open {
 
 .ms-adv-details__layout {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-columns: 350px minmax(0, 1fr);
   gap: 28px;
   align-items: stretch;
 
@@ -2886,7 +2886,7 @@ body.ms-adv-lightbox-open {
   gap: 14px;
   align-items: center;
 
-  padding: 12px 12px;
+  padding: 10px 0;
   background-color: #fff;
   border-radius: 20px;
 }
@@ -4212,7 +4212,7 @@ body.ms-adv-lightbox-open {
    ========================================================= */
 
 /* wspólny wygląd kółka */
-.ms-adv-compareCard__side::after {
+/* .ms-adv-compareCard__side::after {
   position: absolute;
   left: 16px;
   bottom: 16px;
@@ -4236,27 +4236,27 @@ body.ms-adv-lightbox-open {
   box-shadow: 0 5px 14px rgba(0, 0, 0, .18);
 
   pointer-events: none;
-}
+} */
 
 
 /* MENTOR — zielony check */
-.ms-adv-compareCard__side:has(
+/* .ms-adv-compareCard__side:has(
   .ms-adv-compareCard__badge--mentor
 )::after {
   content: "✓";
   background: #556b00;
   border: 3px solid white;
-}
+} */
 
 
 /* KONKURENCJA — czerwony X */
-.ms-adv-compareCard__side:has(
+/* .ms-adv-compareCard__side:has(
   .ms-adv-compareCard__badge--competition
 )::after {
   content: "X";
   background: #c62828;
   border: 3px solid white;
-}
+} */
 
 
 /* ---------- ETYKIETY ---------- */
