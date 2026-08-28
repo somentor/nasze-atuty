@@ -3570,7 +3570,7 @@ body.ms-adv-lightbox-open {
 }
 
 .ms-mediaFrame--crop {
-  --ms-media-zoom: 1.22;
+  --ms-media-zoom: 1.15;
 }
 
 .ms-mediaFrame--crop iframe {
