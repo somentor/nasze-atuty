@@ -915,6 +915,18 @@ function createDetailHotspot(point, index) {
 
       renderDetailsProduct(detailsKey);
 
+      /* VIDEO ALUMINIUM */
+      var aluVideo = root.querySelector(
+        ".ms-adv-details__video--alu iframe"
+      );
+
+      if (aluVideo) {
+        if (detailsKey === "alu" && aluVideo.dataset.src) {
+          aluVideo.src = aluVideo.dataset.src;
+        } else {
+          aluVideo.src = "about:blank";
+        }
+      }
 
       /* zdjęcie główne modala */
       var detailsImage =
@@ -1132,6 +1144,11 @@ function openLightbox(button) {
       }
 
       lightbox.hidden = true;
+
+      /* ZATRZYMANIE VIDEO */
+      var aluVideo = root.querySelector(".ms-adv-details__video--alu iframe");
+
+      if (aluVideo) {aluVideo.src = "about:blank";}
 
       /* Usunięcie KeyShotXR */
       keyshotContainer.innerHTML = "";
@@ -1882,6 +1899,7 @@ function init360Previews(root) {
   );
 
 })();
+
 
 
 })();
