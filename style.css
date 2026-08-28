@@ -3535,10 +3535,10 @@ body.ms-adv-lightbox-open {
 
   position: absolute;
   right: 32px;
-  bottom: 32px;
+  top: 32px;
   z-index: 20;
 
-  width: 360px;
+  width: 300px;
   aspect-ratio: 16 / 9;
 
   overflow: hidden;
@@ -3558,6 +3558,38 @@ body.ms-adv-lightbox-open {
   border: 0;
 }
 
+.ms-mediaFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+  background: #000;
+}
+
+.ms-mediaFrame--crop {
+  --ms-media-zoom: 1.45;
+}
+
+.ms-mediaFrame--crop iframe {
+  position: absolute !important;
+
+  top: 50% !important;
+  left: 50% !important;
+
+  width: calc(93% * var(--ms-media-zoom)) !important;
+  height: calc(100% * var(--ms-media-zoom)) !important;
+
+  transform: translate(-50%, -50%) !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  border: 0 !important;
+  display: block !important;
+}
 
 /* =========================================================
    LIGHTBOX — MOBILE
