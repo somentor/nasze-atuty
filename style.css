@@ -3204,7 +3204,13 @@ body.ms-adv-lightbox-open {
   border: 3px solid #fff;
   border-radius: 50%;
 
-  background: rgba(255, 0, 0, .86);
+  background-color: var(--adv-brand-dark);
+
+  background-image: url("src/ikony/oko.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25px 25px;
+
   box-shadow:
     0 0 0 7px rgba(255, 255, 255, .28),
     0 6px 22px rgba(17, 24, 39, .38);
@@ -3220,11 +3226,54 @@ body.ms-adv-lightbox-open {
     background .18s ease;
 }
 
+.ms-adv-details__hotspot::before {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 100%;
+  height: 100%;
+
+  border: 2px solid rgba(85, 107, 0, .75);
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation: msAdvHotspotSignal 3s ease-out infinite;
+}
+
+@keyframes msAdvHotspotSignal {
+
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: .8;
+  }
+
+  45% {
+    transform: translate(-50%, -50%) scale(2.3);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(2.3);
+    opacity: 0;
+  }
+}
+
 .ms-adv-details__hotspot:hover,
 .ms-adv-details__hotspot:focus-visible,
 .ms-adv-details__hotspot.is-active {
   transform: translate(-50%, -50%) scale(1.18);
-  background: var(--adv-brand-dark, #3f5600);
+  background-color: #6f8700;
   box-shadow:
     0 0 0 8px rgba(255, 255, 255, .38),
     0 8px 28px rgba(17, 24, 39, .46);
@@ -3476,6 +3525,38 @@ body.ms-adv-lightbox-open {
 }
 }
 
+/* WIDEO YOUTUBE OSADZONE W DETALACH ALU */
+.ms-adv-details__video--alu {
+  display: none;
+}
+
+.ms-adv-details.is-alu .ms-adv-details__video--alu {
+  display: block;
+
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+  z-index: 20;
+
+  width: 360px;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+  background: #000;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .16);
+}
+
+.ms-adv-details__video--alu iframe {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+}
 
 
 /* =========================================================
@@ -4447,7 +4528,6 @@ body.ms-adv-lightbox-open {
 
 
 /* napis */
-
 .ms-adv-sideNav__label {
   position: absolute;
 
@@ -4456,9 +4536,9 @@ body.ms-adv-lightbox-open {
 
   transform:
     translateY(-50%)
-    translateX(-6px);
+    translateX(0);
 
-  width: max-content;
+  width: 165px;
   max-width: 170px;
 
   padding: 7px 11px;
@@ -4468,36 +4548,24 @@ body.ms-adv-lightbox-open {
 
   background: rgba(255,255,255,.94);
 
-  color: #374151;
+  color: #6b7280;
 
   font-size: 11px;
   line-height: 1.2;
-  font-weight: 750;
+  font-weight: 650;
 
   box-shadow:
-    0 6px 20px rgba(17,24,39,.10);
+    0 6px 20px rgba(17,24,39,.08);
 
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
 
   pointer-events: none;
 
   transition:
-    opacity .2s ease,
-    transform .2s ease,
-    visibility .2s ease;
-}
-
-
-/* hover */
-
-.ms-adv-sideNav__item:hover .ms-adv-sideNav__label {
-  opacity: 1;
-  visibility: visible;
-
-  transform:
-    translateY(-50%)
-    translateX(0);
+    color .25s ease,
+    font-weight .25s ease,
+    opacity .25s ease;
 }
 
 
