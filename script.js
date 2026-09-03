@@ -296,7 +296,7 @@
       {
         icon: "src/ikony/malowanie_proszkowe.webp",
         title: "Malowanie proszkowe",
-        text: "Wszystkie konstrukcje aluminiowe są malowane proszkowo w kolorze RAL 7012 (standard)."
+        text: "Wszystkie konstrukcje aluminiowe są malowane proszkowo w kolorze RAL 7012 (standard) - inne kolory za dopłatą."
       },
 
       {
