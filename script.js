@@ -31,6 +31,7 @@
 
     initProductGalleryLightbox(root);
     init360Previews(root);
+    initTechModal(root);
     initFaq(root);
   });
 
@@ -149,8 +150,7 @@
       x = pozycja od lewej w %
       y = pozycja od góry w %
 
-      image = zdjęcie, które pokaże się
-              w dużym okręgu
+      image = zdjęcie, które pokaże się w dużym okręgu
     */
 
     var DETAILS_CONFIG = {
@@ -484,22 +484,12 @@
       hideDetailsZoom();
     });
 
-    window.addEventListener(
-      "resize",
-      function () {
-
-        if (
-          detailsViewer &&
-          !detailsViewer.hidden
-        ) {
-
-          requestAnimationFrame(
-            syncDetailsHotspots
-          );
-
-        }
-
+    window.addEventListener("resize", function () {
+      if (detailsViewer &&!detailsViewer.hidden) {
+        requestAnimationFrame(syncDetailsHotspots);
       }
+    }
+
     );
   }
 
@@ -553,65 +543,29 @@ function createDetailHotspot(point, index) {
   var hotspot = document.createElement("button");
 
   hotspot.type = "button";
-
-  hotspot.className =
-    "ms-adv-details__hotspot";
-
+  hotspot.className = "ms-adv-details__hotspot";
 
   /* pozycja hotspotu */
+  hotspot.style.left = point.x + "%";
+  hotspot.style.top = point.y + "%";
 
-  hotspot.style.left =
-    point.x + "%";
+  hotspot.setAttribute("aria-label", point.alt || ("Pokaż detal " + (index + 1)));
 
-  hotspot.style.top =
-    point.y + "%";
-
-
-  hotspot.setAttribute(
-    "aria-label",
-    point.alt ||
-    ("Pokaż detal " + (index + 1))
-  );
-
-
-  /*
-    Sprawdzamy, czy urządzenie
-    faktycznie obsługuje hover myszką.
-  */
-
-  var canHover =
-    window.matchMedia(
-      "(hover: hover) and (pointer: fine)"
-    ).matches;
-
+  /* Sprawdzamy, czy urządzenie faktycznie obsługuje hover myszką.*/
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   /* =============================
      DESKTOP / MYSZ
      ============================= */
 
   if (canHover) {
+    hotspot.addEventListener("mouseenter", function () {
+      showDetailsZoom(point,hotspot);
+    });
 
-    hotspot.addEventListener(
-      "mouseenter",
-      function () {
-
-        showDetailsZoom(
-          point,
-          hotspot
-        );
-
-      }
-    );
-
-
-    hotspot.addEventListener(
-      "mouseleave",
-      function () {
-
-        hideDetailsZoom();
-
-      }
-    );
+    hotspot.addEventListener("mouseleave", function () {
+      hideDetailsZoom();
+    });
 
   }
 
@@ -620,80 +574,38 @@ function createDetailHotspot(point, index) {
      KLIK / TELEFON / TABLET
      ============================= */
 
-  hotspot.addEventListener(
-    "click",
-    function (event) {
+  hotspot.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
 
-      event.preventDefault();
-      event.stopPropagation();
+    /* Telefon / tablet: kliknięcie otwiera detal. */
+    if (!canHover) {
+      /* Jeśli klikamy drugi raz w TEN SAM aktywny punkt, zamykamy detal */
 
-
-      /*
-        Telefon / tablet:
-        kliknięcie otwiera detal.
-      */
-
-      if (!canHover) {
-
-        /*
-          Jeśli klikamy drugi raz
-          w TEN SAM aktywny punkt,
-          zamykamy detal.
-        */
-
-        if (
-          activeDetailHotspot === hotspot &&
-          detailsZoom.classList.contains(
-            "is-active"
-          )
-        ) {
-
-          hideDetailsZoom();
-
-          return;
-
-        }
-
-
-        /*
-          Pierwsze kliknięcie
-          lub inny hotspot.
-        */
-
-        showDetailsZoom(
-          point,
-          hotspot
-        );
+      if (activeDetailHotspot === hotspot && detailsZoom.classList.contains("is-active")) {
+        hideDetailsZoom();
 
         return;
       }
 
+      /* Pierwsze kliknięcie lub inny hotspot */
+      showDetailsZoom(point, hotspot);
 
-      /*
-        Desktop:
-        click nie jest potrzebny,
-        bo mamy hover.
-
-        Zostawiamy jednak możliwość
-        kliknięcia dla dostępności.
-      */
-
-      showDetailsZoom(
-        point,
-        hotspot
-      );
-
+      return;
     }
-  );
 
+    /* Desktop: click nie jest potrzebny, bo mamy hover. Zostawiamy jednak możliwość kliknięcia dla dostępności */
+    showDetailsZoom(point, hotspot);
+
+  });
 
   return hotspot;
+
 }
 
     function renderDetailsProduct(detailsKey) {
 
-      var product =
-        DETAILS_PRODUCT[detailsKey];
+      var product = DETAILS_PRODUCT[detailsKey];
 
       if (!product) {
         return;
@@ -784,141 +696,54 @@ function createDetailHotspot(point, index) {
         return;
       }
 
+      /* Rozmiar ELEMENTU img */
+      var imageRect = detailsMain.getBoundingClientRect();
+      var stageRect = detailsStage.getBoundingClientRect();
 
-      /*
-        Rozmiar ELEMENTU img.
-      */
+      /* Naturalne proporcje zdjęcia */
+      var naturalWidth = detailsMain.naturalWidth;
+      var naturalHeight = detailsMain.naturalHeight;
 
-      var imageRect =
-        detailsMain.getBoundingClientRect();
+      /* Przy object-fit: contain zdjęcie mieści się w elemencie bez obcinania. Wyliczamy jego FAKTYCZNY rozmiar */
+      var scale = Math.min(imageRect.width / naturalWidth, imageRect.height / naturalHeight);
 
-      var stageRect =
-        detailsStage.getBoundingClientRect();
+      var renderedWidth = naturalWidth * scale;
+      var renderedHeight = naturalHeight * scale;
 
+      /* object-position: center center więc wolne miejsce dzielimy po połowie */
+      var offsetX = (imageRect.width - renderedWidth) / 2;
+      var offsetY = (imageRect.height - renderedHeight) / 2;
 
-      /*
-        Naturalne proporcje zdjęcia.
-      */
+      /* Pozycja obrazu względem STAGE */
+      var left = imageRect.left - stageRect.left + offsetX;
+      var top = imageRect.top - stageRect.top + offsetY;
 
-      var naturalWidth =
-        detailsMain.naturalWidth;
-
-      var naturalHeight =
-        detailsMain.naturalHeight;
-
-
-      /*
-        Przy object-fit: contain zdjęcie
-        mieści się w elemencie bez obcinania.
-
-        Wyliczamy jego FAKTYCZNY rozmiar.
-      */
-
-      var scale = Math.min(
-
-        imageRect.width / naturalWidth,
-
-        imageRect.height / naturalHeight
-
-      );
-
-
-      var renderedWidth =
-        naturalWidth * scale;
-
-      var renderedHeight =
-        naturalHeight * scale;
-
-
-      /*
-        object-position: center center
-
-        więc wolne miejsce dzielimy
-        po połowie.
-      */
-
-      var offsetX =
-        (imageRect.width - renderedWidth) / 2;
-
-      var offsetY =
-        (imageRect.height - renderedHeight) / 2;
-
-
-      /*
-        Pozycja obrazu względem STAGE.
-      */
-
-      var left =
-        imageRect.left -
-        stageRect.left +
-        offsetX;
-
-      var top =
-        imageRect.top -
-        stageRect.top +
-        offsetY;
-
-
-      /*
-        Warstwa hotspotów ma teraz
-        dokładnie wielkość widocznego zdjęcia.
-      */
-
-      detailsHotspots.style.left =
-        left + "px";
-
-      detailsHotspots.style.top =
-        top + "px";
-
-      detailsHotspots.style.width =
-        renderedWidth + "px";
-
-      detailsHotspots.style.height =
-        renderedHeight + "px";
-
+      /* Warstwa hotspotów ma teraz dokładnie wielkość widocznego zdjęcia */
+      detailsHotspots.style.left = left + "px";
+      detailsHotspots.style.top = top + "px";
+      detailsHotspots.style.width = renderedWidth + "px";
+      detailsHotspots.style.height = renderedHeight + "px";
     }
 
-    if (
-      typeof ResizeObserver !== "undefined" &&
-      detailsStage
-    ) {
+    if (typeof ResizeObserver !== "undefined" && detailsStage) {
+      var detailsResizeObserver = new ResizeObserver(function () {
+        if (detailsViewer && !detailsViewer.hidden) {
+          requestAnimationFrame(syncDetailsHotspots);
+        }
+      });
 
-      var detailsResizeObserver =
-        new ResizeObserver(function () {
-
-          if (
-            detailsViewer &&
-            !detailsViewer.hidden
-          ) {
-
-            requestAnimationFrame(
-              syncDetailsHotspots
-            );
-
-          }
-
-        });
-
-
-      detailsResizeObserver.observe(
-        detailsStage
-      );
-
+      detailsResizeObserver.observe(detailsStage);
     }
 
     function showDetails(button) {
       var image = button.querySelector("img");
 
-      var detailsKey =
-        button.getAttribute("data-ms-details");
-
+      var detailsKey = button.getAttribute("data-ms-details");
 
       renderDetailsProduct(detailsKey);
 
       /* VIDEO ALUMINIUM */
-      var aluVideo = root.querySelector(
-        ".ms-adv-details__video--alu iframe"
-      );
+      var aluVideo = root.querySelector(".ms-adv-details__video--alu iframe");
 
       if (aluVideo) {
         if (detailsKey === "alu" && aluVideo.dataset.src) {
@@ -929,13 +754,8 @@ function createDetailHotspot(point, index) {
       }
 
       /* zdjęcie główne modala */
-      var detailsImage =
-        button.getAttribute("data-ms-details-image");
-
-
-      var points =
-        DETAILS_CONFIG[detailsKey] || [];
-
+      var detailsImage = button.getAttribute("data-ms-details-image");
+      var points = DETAILS_CONFIG[detailsKey] || [];
 
       if (
         !image ||
@@ -949,20 +769,15 @@ function createDetailHotspot(point, index) {
         return;
       }
 
-
       /* chowamy KeyShot */
-
       if (keyshotHeader) {
         keyshotHeader.hidden = true;
       }
 
-
       keyshotContainer.innerHTML = "";
       keyshotContainer.hidden = true;
 
-
       /* chowamy zwykłe zdjęcie lightboxa */
-
       lightboxImg.hidden = true;
       lightboxImg.src = "";
       lightboxImg.alt = "";
@@ -971,43 +786,23 @@ function createDetailHotspot(point, index) {
       /* =====================================================
         NAJPIERW POKAZUJEMY VIEWER
         ===================================================== */
-
       detailsViewer.hidden = false;
-
 
       /* =====================================================
         GENERUJEMY HOTSPOTY
         ===================================================== */
-
       detailsHotspots.innerHTML = "";
 
-
       points.forEach(function (point, index) {
-
-        detailsHotspots.appendChild(
-          createDetailHotspot(
-            point,
-            index
-          )
-        );
-
+        detailsHotspots.appendChild(createDetailHotspot(point,index));
       });
-
 
       /* =====================================================
         USTAWIAMY ZDJĘCIE
         ===================================================== */
 
-      detailsMain.src =
-        detailsImage ||
-        image.currentSrc ||
-        image.src;
-
-
-      detailsMain.alt =
-        image.alt ||
-        "Zdjęcie produktu";
-
+      detailsMain.src = detailsImage || image.currentSrc || image.src;
+      detailsMain.alt = image.alt || "Zdjęcie produktu";
 
       /* =====================================================
         DOPIERO TERAZ LICZYMY POZYCJE
@@ -1017,35 +812,18 @@ function createDetailHotspot(point, index) {
         ===================================================== */
 
       function updateHotspotsAfterLayout() {
-
         requestAnimationFrame(function () {
-
           requestAnimationFrame(function () {
-
             syncDetailsHotspots();
-
           });
-
         });
-
       }
 
-
-      if (
-        detailsMain.complete &&
-        detailsMain.naturalWidth
-      ) {
-
+      if (detailsMain.complete && detailsMain.naturalWidth) {
         updateHotspotsAfterLayout();
-
-      } else {
-
-        detailsMain.addEventListener(
-          "load",
-          updateHotspotsAfterLayout,
-          { once: true }
-        );
-
+      } 
+      else {
+        detailsMain.addEventListener("load", updateHotspotsAfterLayout, { once: true });
       }
 
     }
@@ -1059,79 +837,54 @@ function createDetailHotspot(point, index) {
         keyshotHeader.hidden = false;
       }
 
-
-      /*
-        Ukrywamy zdjęcie.
-      */
-
+      /* Ukrywamy zdjęcie */
       lightboxImg.hidden = true;
       lightboxImg.src = "";
       lightboxImg.alt = "";
 
-
-      /*
-        Tworzymy iframe KeyShotXR.
-      */
-
+      /* Tworzymy iframe KeyShotXR */
       keyshotContainer.innerHTML = "";
       keyshotContainer.hidden = false;
 
-
-      var iframe =
-        document.createElement("iframe");
-
+      var iframe = document.createElement("iframe");
 
       iframe.src = url;
+      iframe.title = "Wizualizacja 3D produktu";
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("scrolling", "no");
 
-      iframe.title =
-        "Wizualizacja 3D produktu";
+      keyshotContainer.appendChild(iframe);
 
-      iframe.setAttribute(
-        "allowfullscreen",
-        ""
-      );
-
-      iframe.setAttribute(
-        "scrolling",
-        "no"
-      );
-
-
-      keyshotContainer.appendChild(
-        iframe
-      );
     }
 
+    function openLightbox(button) {
 
+      lastFocus = button;
 
-function openLightbox(button) {
+      var keyshotUrl = button.getAttribute("data-keyshot-url");
+      var hasDetails = button.hasAttribute("data-ms-details");
 
-  lastFocus = button;
+      /* 1. Detale */
+      if (hasDetails) {
+        showDetails(button);
+      }
 
-  var keyshotUrl = button.getAttribute("data-keyshot-url");
-  var hasDetails = button.hasAttribute("data-ms-details");
+      /* 2. KeyShot */
+      else if (keyshotUrl) {
+        showKeyshot(keyshotUrl);
+      }
 
-  /* 1. Detale */
-  if (hasDetails) {
-    showDetails(button);
-  }
+      /* 3. Zwykłe zdjęcie */
+      else {
+        showImage(button);
+      }
 
-  /* 2. KeyShot */
-  else if (keyshotUrl) {
-    showKeyshot(keyshotUrl);
-  }
+      lightbox.hidden = false;
 
-  /* 3. Zwykłe zdjęcie */
-  else {
-    showImage(button);
-  }
+      lockScroll();
 
-  lightbox.hidden = false;
-
-  lockScroll();
-
-  closeButton.focus({preventScroll: true});
-}
+      closeButton.focus({preventScroll: true});
+    }
 
 
     /* =======================================================
@@ -1186,10 +939,8 @@ function openLightbox(button) {
         lastFocus.focus({preventScroll: true});
       }
 
-
       lastFocus = null;
     }
-
 
 
     /* =======================================================
@@ -1223,6 +974,326 @@ function openLightbox(button) {
     );
   }
 
+  /* =========================================================
+   SEKCJA 4 — TECHNOLOGIE / MODAL
+   ========================================================= */
+
+function initTechModal(root) {
+
+  var cards = Array.prototype.slice.call(
+    root.querySelectorAll("[data-ms-tech-card]")
+  );
+
+  var modal = root.querySelector("[data-ms-tech-modal]");
+  var modalImage = root.querySelector("[data-ms-tech-modal-image]");
+  var modalTitle = root.querySelector("[data-ms-tech-modal-title]");
+  var modalLabel = root.querySelector("[data-ms-tech-modal-label]");
+  var modalColumns = root.querySelector("[data-ms-tech-modal-columns]");
+  var closeButtons = root.querySelectorAll("[data-ms-tech-close]");
+
+  if (
+    !cards.length ||
+    !modal ||
+    !modalImage ||
+    !modalTitle ||
+    !modalColumns
+  ) {
+    return;
+  }
+
+  /*
+   * Tutaj edytujesz całą zawartość modali.
+   *
+   * columns:
+   * - 1 element = jedna kolumna
+   * - 2 elementy = dwie kolumny
+   * - 3 elementy = trzy kolumny
+   */
+
+  var TECH_DETAILS = {
+
+    "druk-uv": {
+      title: "Druk UV",
+      image: "src/technologie/druk-uv.webp",
+      imageAlt: "Technologia druku UV",
+
+      columns: [
+        {
+          title: "Lite aluminium",
+          subtitle: "⭐⭐⭐⭐⭐",
+          text: "Materiał klasy premium, zapewniający wyjątkową precyzję nadruku, niezwykłą sztywność, stabilność wymiarową i bardzo dużą trwałość. Możliwość zabezpieczenia jej lakierem ogniotrwałym bardzo podnosi jej walory użytkowe."
+        },
+        {
+          title: "Dibond",
+          subtitle: "⭐⭐⭐⭐",
+          text: "Wysokiej jakości płyta kompozytowa przeznaczona do zadruku jedno- i dwustronnego. Gładka, sztywna i stabilna powierzchnia pozwala uzyskać wysoką jakość odwzorowania grafiki i bardzo dobrą czytelność nadruku."
+        },
+        {
+          title: "PCV",
+          subtitle: "⭐⭐⭐",
+          text: "Lekka, uniwersalna płyta zapewniająca dobrą jakość nadruku i estetyczny wygląd. Sprawdza się także na zewnątrz, jednak przy długotrwałej ekspozycji na zmienne warunki atmosferyczne jest mniej trwała niż DIBOND."
+        }
+      ]
+    },
+
+
+    "lakier-uv": {
+      title: "Lakier UV",
+      image: "src/technologie/lakier-uv.webp",
+      imageAlt: "Zabezpieczenie powierzchni lakierem UV",
+
+      columns: [
+        {
+          title: "Lakier UV",
+          text: "opis"
+        }
+      ]
+    },
+
+
+    "laminat": {
+      title: "Laminat",
+      image: "src/technologie/laminat.webp",
+      imageAlt: "Laminowanie powierzchni",
+
+      columns: [
+        {
+          title: "Mat",
+          text: "opis"
+        },
+        {
+          title: "Połysk",
+          text: "opis"
+        }
+      ]
+    },
+
+
+    "niepalnosc-pca": {
+      title: "Niepalność i PCA",
+      image: "src/technologie/niepalnosc-pca.webp",
+      imageAlt: "Technologia niepalna i certyfikacja PCA",
+
+      columns: [
+        {
+          title: "Lakier utwardzony ogniotrwale",
+          text: "opis"
+        }
+      ]
+    },
+
+
+    "drewno-cnc": {
+      title: "Drewno i CNC",
+      image: "src/technologie/drewno-cnc.webp",
+      imageAlt: "Obróbka drewna CNC",
+
+      columns: [
+        {
+          title: "Iglaste",
+          text: "Opis stosowanych gatunków i rodzajów drewna."
+        },
+        {
+          title: "Liściaste",
+          text: "Opis możliwości technologicznych obróbki CNC."
+        },
+        {
+          title: "KVH",
+          text: "Opis możliwości technologicznych obróbki CNC."
+        }
+      ]
+    },
+
+
+    "malowanie-proszkowe": {
+      title: "Malowanie proszkowe",
+      image: "src/technologie/malowanie-proszkowe.webp",
+      imageAlt: "Malowanie proszkowe aluminium",
+
+      columns: [
+        {
+          title: "Aluminium malowane proszkowo",
+          text: "opis"
+        }
+      ]
+    }
+
+  };
+
+
+  var lastFocus = null;
+
+  function syncTechColumnTitles() {
+    var titles = modalColumns.querySelectorAll(".ms-adv-techModal__columnTitle");
+
+    if (!titles.length) {
+      return;
+    }
+
+    /* Najpierw kasujemy poprzednie wartości, żeby poprawnie przeliczyć wysokość.*/
+    Array.prototype.forEach.call(titles, function (title) {
+      title.style.minHeight = "";
+    });
+
+    /* Na telefonie kolumny są jedna pod drugą, więc wyrównanie nie jest potrzebne */
+    if (window.innerWidth <= 700) {
+      return;
+    }
+
+    var maxHeight = 0;
+
+    Array.prototype.forEach.call(titles, function (title) {
+      maxHeight = Math.max(maxHeight, title.offsetHeight);
+    });
+
+    Array.prototype.forEach.call(titles, function (title) {
+      title.style.minHeight = maxHeight + "px";
+    });
+  }
+
+  function renderModal(key) {
+
+    var data = TECH_DETAILS[key];
+
+    if (!data) {
+      return false;
+    }
+
+    modalImage.src = data.image || "";
+    modalImage.alt = data.imageAlt || data.title || "";
+
+    modalTitle.textContent = data.title || "";
+
+    if (modalLabel) {
+      modalLabel.textContent = data.label || "";
+    }
+
+    modalColumns.innerHTML = "";
+
+    var columns = data.columns || [];
+
+    /* Liczba kolumn ustalana automatycznie */
+    modalColumns.style.setProperty("--tech-columns", Math.max(1, Math.min(columns.length, 3)));
+
+    columns.forEach(function (column) {
+      var item = document.createElement("div");
+      item.className = "ms-adv-techModal__column";
+
+      /* TYTUŁ */
+      if (column.title) {
+        var title = document.createElement("strong");
+        title.className = "ms-adv-techModal__columnTitle";
+        title.textContent = column.title;
+        item.appendChild(title);
+      }
+
+      /* OPCJONALNY PODTYTUŁ — np. gwiazdki */
+      if (column.subtitle) {
+        var subtitle = document.createElement("span");
+        subtitle.className = "ms-adv-techModal__columnSubtitle";
+        subtitle.textContent = column.subtitle;
+        item.appendChild(subtitle);
+      }
+
+      /* OPIS */
+      if (column.text) {
+        var text = document.createElement("p");
+        text.className = "ms-adv-techModal__columnText";
+        text.textContent = column.text;
+        item.appendChild(text);
+      }
+
+      modalColumns.appendChild(item);
+    });
+
+    /* Wyrównujemy wysokość tytułów. Jeśli jeden tytuł ma 2 linie, pozostałe dostaną tę samą wysokość */
+    requestAnimationFrame(syncTechColumnTitles);
+
+    return true;
+  }
+
+  function openModal(card) {
+
+    var key = card.getAttribute("data-tech-key");
+
+    if (!renderModal(key)) {
+      return;
+    }
+
+    lastFocus = card;
+
+    modal.hidden = false;
+
+    document.documentElement.classList.add("ms-adv-techModal-open");
+
+    document.body.classList.add("ms-adv-techModal-open");
+
+    var closeButton = modal.querySelector(".ms-adv-techModal__close");
+
+    if (closeButton) {
+      closeButton.focus({preventScroll: true});
+    }
+  }
+
+  function closeModal() {
+
+    if (modal.hidden) {
+      return;
+    }
+
+    modal.hidden = true;
+
+    document.documentElement.classList.remove("ms-adv-techModal-open");
+
+    document.body.classList.remove("ms-adv-techModal-open");
+
+    modalImage.src = "";
+    modalImage.alt = "";
+
+    if (lastFocus && typeof lastFocus.focus === "function") {
+      lastFocus.focus({preventScroll: true});
+    }
+
+    lastFocus = null;
+  }
+
+
+  cards.forEach(function (card) {
+
+    card.addEventListener("click", function () {
+      openModal(card);
+    });
+
+    /* Obsługa klawiatury */
+    card.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openModal(card);
+      }
+
+    });
+
+  });
+
+  Array.prototype.forEach.call(closeButtons, function (button) {
+      button.addEventListener("click", closeModal);
+    }
+  );
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !modal.hidden) {
+      closeModal();
+    }
+
+  });
+
+  window.addEventListener("resize", function () {
+    if (!modal.hidden) {
+      requestAnimationFrame(syncTechColumnTitles);
+    }
+  });
+
+}
 
 
   /* =========================================================
@@ -1257,20 +1328,16 @@ function openLightbox(button) {
         return;
       }
 
-      button.addEventListener(
-        "click",
-        function () {
-          var shouldOpen = button.getAttribute("aria-expanded") !== "true";
+      button.addEventListener("click", function () {
+        var shouldOpen = button.getAttribute("aria-expanded") !== "true";
+        items.forEach(function (otherItem) {
+            setItem(otherItem, false);
+          }
+        );
 
-          items.forEach(
-            function (otherItem) {
-              setItem(otherItem, false);
-            }
-          );
+        setItem(item, shouldOpen);
+      });
 
-          setItem(item, shouldOpen);
-        }
-      );
     });
   }
 
@@ -1505,11 +1572,9 @@ function init360Previews(root) {
   if (!sections.length) return;
 
   function setActive(index) {
-
     sections.forEach((entry, i) => {
       entry.item.classList.toggle("is-active", i === index);
     });
-
 
     /*
      * Pozycja zielonego suwaka.
@@ -1517,11 +1582,7 @@ function init360Previews(root) {
      * Ostatnia sekcja = 100%
      */
 
-    const percent =
-      sections.length > 1
-        ? index / (sections.length - 1)
-        : 0;
-
+    const percent = sections.length > 1 ? index / (sections.length - 1) : 0;
 
     if (progress) {
       progress.style.height = `${percent * 100}%`;
@@ -1561,7 +1622,6 @@ function init360Previews(root) {
 
   ticking = false;
 }
-
 
   function requestNavUpdate() {
 
@@ -1611,21 +1671,15 @@ function init360Previews(root) {
 
 (function () {
 
-  const slider =
-    document.querySelector("[data-ms-compare-slider]");
+  const slider = document.querySelector("[data-ms-compare-slider]");
 
   if (!slider) return;
 
+  const overlay = slider.querySelector("[data-ms-compare-overlay]");
 
-  const overlay =
-    slider.querySelector("[data-ms-compare-overlay]");
-
-  const divider =
-    slider.querySelector("[data-ms-compare-divider]");
-
+  const divider = slider.querySelector("[data-ms-compare-divider]");
 
   if (!overlay || !divider) return;
-
 
   let dragging = false;
 
@@ -1654,11 +1708,7 @@ function init360Previews(root) {
 
   function setPosition(percent, animated = false) {
 
-    percent = Math.max(
-      0,
-      Math.min(100, percent)
-    );
-
+    percent = Math.max(0, Math.min(100, percent));
 
     /*
      * Przy automacie włączamy płynne przejście.
@@ -1667,28 +1717,16 @@ function init360Previews(root) {
      */
 
     if (animated) {
-
-      overlay.style.transition =
-        "width 1.4s cubic-bezier(.22,.61,.36,1)";
-
-      divider.style.transition =
-        "left 1.4s cubic-bezier(.22,.61,.36,1)";
-
+      overlay.style.transition = "width 1.4s cubic-bezier(.22,.61,.36,1)";
+      divider.style.transition = "left 1.4s cubic-bezier(.22,.61,.36,1)";
     } else {
-
       overlay.style.transition = "none";
       divider.style.transition = "none";
-
     }
 
-
-    overlay.style.width =
-      percent + "%";
-
-    divider.style.left =
-      percent + "%";
+    overlay.style.width = percent + "%";
+    divider.style.left = percent + "%";
   }
-
 
   /* =======================================================
      POZYCJA Z KURSORA / PALCA
@@ -1696,23 +1734,13 @@ function init360Previews(root) {
 
   function updateFromPointer(clientX) {
 
-    const rect =
-      slider.getBoundingClientRect();
+    const rect = slider.getBoundingClientRect();
 
+    let x = clientX - rect.left;
 
-    let x =
-      clientX - rect.left;
+    x = Math.max(0, Math.min(rect.width, x));
 
-
-    x = Math.max(
-      0,
-      Math.min(rect.width, x)
-    );
-
-
-    const percent =
-      (x / rect.width) * 100;
-
+    const percent = (x / rect.width) * 100;
 
     setPosition(percent, false);
   }
@@ -1728,7 +1756,6 @@ function init360Previews(root) {
 
     autoEnabled = false;
 
-
     if (autoTimer) {
 
       clearInterval(autoTimer);
@@ -1736,12 +1763,7 @@ function init360Previews(root) {
 
     }
 
-
-    /*
-     * Usuwamy automatyczne transition,
-     * żeby ręczne przeciąganie było natychmiastowe.
-     */
-
+    /* Usuwamy automatyczne transition, żeby ręczne przeciąganie było natychmiastowe */
     overlay.style.transition = "none";
     divider.style.transition = "none";
   }
@@ -1755,29 +1777,18 @@ function init360Previews(root) {
 
     if (!autoEnabled) return;
 
-
     /*
      * Zakres:
      *
      * 20% <------------> 80%
      */
 
-    const target =
-      autoDirectionLeft
-        ? 20
-        : 80;
+    const target = autoDirectionLeft ? 20 : 80;
 
+    setPosition(target,true);
 
-    setPosition(
-      target,
-      true
-    );
-
-
-    autoDirectionLeft =
-      !autoDirectionLeft;
+    autoDirectionLeft = !autoDirectionLeft;
   }
-
 
   /* =======================================================
      RĘCZNE PRZECIĄGANIE
@@ -1810,9 +1821,7 @@ function init360Previews(root) {
 
       if (!dragging) return;
 
-      updateFromPointer(
-        event.clientX
-      );
+      updateFromPointer(event.clientX);
 
     }
   );
@@ -1855,24 +1864,11 @@ function init360Previews(root) {
      ======================================================= */
 
   function syncWidth() {
-
-    const rect =
-      slider.getBoundingClientRect();
-
-
-    slider.style.setProperty(
-      "--ms-compare-width",
-      rect.width + "px"
-    );
-
+    const rect = slider.getBoundingClientRect();
+    slider.style.setProperty("--ms-compare-width", rect.width + "px");
   }
 
-
-  window.addEventListener(
-    "resize",
-    syncWidth
-  );
-
+  window.addEventListener("resize", syncWidth);
 
   /* =======================================================
      START
@@ -1880,23 +1876,12 @@ function init360Previews(root) {
 
   syncWidth();
 
-
   /* start dokładnie na środku */
 
-  setPosition(
-    50,
-    false
-  );
+  setPosition(50,false);
 
-
-  /*
-   * Pierwszy automatyczny ruch po 5 sekundach.
-   */
-
-  autoTimer = setInterval(
-    runAutoMove,
-    5000
-  );
+  /* Pierwszy automatyczny ruch po 5 sekundach */
+  autoTimer = setInterval(runAutoMove, 5000);
 
 })();
 
