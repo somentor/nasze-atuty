@@ -990,6 +990,9 @@ function initTechModal(root) {
   var modalLabel = root.querySelector("[data-ms-tech-modal-label]");
   var modalColumns = root.querySelector("[data-ms-tech-modal-columns]");
   var closeButtons = root.querySelectorAll("[data-ms-tech-close]");
+  var modalBody = root.querySelector(".ms-adv-techModal__body");
+  var modalVideo = root.querySelector("[data-ms-tech-modal-video]");
+  var modalVideoFrame = root.querySelector("[data-ms-tech-modal-video-frame]");
 
   if (
     !cards.length ||
@@ -1069,6 +1072,10 @@ function initTechModal(root) {
       title: "Niepalność PCA",
       image: "src/technologie/niepalnosc.webp",
       imageAlt: "Technologia niepalna i certyfikacja PCA",
+      video: {
+        url: "https://www.youtube-nocookie.com/embed/MVNygnt2JzA?autoplay=1&mute=1&rel=0&fs=1&loop=1&playlist=MVNygnt2JzA&playsinline=1",
+        title: "Test niepalności konstrukcji aluminiowej"
+      },
 
       columns: [
         {
@@ -1081,21 +1088,31 @@ function initTechModal(root) {
 
     "drewno-cnc": {
       title: "Drewno i CNC",
-      image: "src/technologie/drewno-cnc.webp",
+      image: "src/technologie/drewno.webp",
       imageAlt: "Obróbka drewna CNC",
+
+      layout: "rows",
 
       columns: [
         {
-          title: "Iglaste",
-          text: "Opis"
+          title: "Drewno standard",
+          text: "W standardowych realizacjach wykorzystujemy słupy drewniane toczone z drewna litego tzw. Okrąglaki (średnicy najczęściej 12-14 cm i 60-80 cm) oraz krawędziaki, wykonywane głównie z drewna iglastego."
         },
         {
-          title: "Liściaste",
-          text: "Opis"
+          title: "Drewno GLT / glulam",
+          text: "<p>Z drewna GLT wykonujemy precyzyjnie obrabiane i toczone słupy o przekroju kołowym, standardowo o średnicach <strong>Ø120 mm oraz Ø60 mm</strong>. Stosujemy je tam, gdzie szczególne znaczenie mają trwałość, stabilność geometryczna i wysoka estetyka wykonania.</p><p>GLT powstaje z odpowiednio przygotowanych i wysuszonych warstw drewna, łączonych w kontrolowanym procesie technologicznym. Taka budowa znacząco ogranicza skręcanie, odkształcenia oraz powstawanie głębokich pęknięć charakterystycznych dla drewna litego, zapewniając jednocześnie wysoką stabilność wymiarową i jednorodność materiału.</p><p>Dzięki tym właściwościom drewno GLT doskonale sprawdza się w naszych certyfikowanych urządzeniach, wykonywanych zgodnie z wymaganiami normy <strong>PN-EN 1176-1+A1:2024-03.</strong></p>"
         },
         {
-          title: "KVH",
-          text: "Opis"
+          title: "Drewno KVH",
+          text: "W realizacjach wymagających większej stabilności wymiarowej i precyzji wykonania stosujemy również certyfikowane drewno konstrukcyjne KVH. Jest to drewno suszone komorowo, sortowane wytrzymałościowo, charakteryzujące się wysoką stabilnością oraz ograniczoną podatnością na skręcanie, pękanie i odkształcenia."
+        },
+        {
+          title: "Impregnacja drewna",
+          text: "Wszystkie elementy drewniane poddajemy impregnacji odpowiednio dobranym impregnatem do drewna, który zabezpiecza materiał przed działaniem wilgoci, czynników atmosferycznych oraz rozwojem grzybów i pleśni. Impregnacja zwiększa trwałość drewna i pozwala zachować jego właściwości podczas wieloletniej eksploatacji na zewnątrz."
+        },
+        {
+          title: "Obróbka CNC",
+          text: "Elementy drewniane obrabiamy z wykorzystaniem własnego zaplecza CNC, co pozwala na precyzyjne wykonywanie cięć, frezowań, otworów oraz innych detali konstrukcyjnych. Technologia CNC zapewnia wysoką powtarzalność wykonania, dokładność wymiarową oraz możliwość realizacji bardziej złożonych elementów i indywidualnych rozwiązań projektowych."
         }
       ]
     },
@@ -1109,7 +1126,7 @@ function initTechModal(root) {
       columns: [
         {
           title: "Aluminium malowane proszkowo",
-          text: "opis"
+          text: "<p>Powierzchnie elementów aluminiowych poddajemy procesowi malowania proszkowego, zapewniającemu trwałą i równomierną powłokę ochronno-dekoracyjną. Parametry procesu, w tym grubość powłoki oraz kolorystykę, dobieramy odpowiednio do wymagań projektu, warunków użytkowania oraz obowiązujących wymagań i standardów dotyczących grubości powłok malarskich.</p><p>Szeroka gama kolorów z palety <strong>RAL</strong> pozwala dopasować wykończenie do charakteru projektu i indywidualnych wymagań realizacji.</p>Malujemy w dowolnym kolorze z palety RAL, jednak cieszącym się największą popularnością jest kolor <strong>RAL 7012.</strong></p>"
         }
       ]
     }
@@ -1151,6 +1168,8 @@ function initTechModal(root) {
 
     var data = TECH_DETAILS[key];
 
+    modalColumns.classList.toggle("ms-adv-techModal__columns--rows", data.layout === "rows");
+
     if (!data) {
       return false;
     }
@@ -1165,6 +1184,28 @@ function initTechModal(root) {
     }
 
     modalColumns.innerHTML = "";
+
+    /* =========================================================
+    OPCJONALNY FILM YOUTUBE
+    ========================================================= */
+
+    var hasVideo = !!(data.video &&data.video.url);
+
+    if (modalVideo && modalVideoFrame) {
+      modalVideo.hidden = !hasVideo;
+
+      if (modalBody) {
+        modalBody.classList.toggle("has-video", hasVideo);
+      }
+
+      if (hasVideo) {
+        modalVideoFrame.src = data.video.url;
+        modalVideoFrame.title = data.video.title || "Film";
+      } else {
+        modalVideoFrame.src = "about:blank";
+        modalVideoFrame.title = "";
+      }
+    }
 
     var columns = data.columns || [];
 
@@ -1248,6 +1289,18 @@ function initTechModal(root) {
 
     if (lastFocus && typeof lastFocus.focus === "function") {
       lastFocus.focus({preventScroll: true});
+    }
+
+    if (modalVideoFrame) {
+      modalVideoFrame.src = "about:blank";
+    }
+
+    if (modalVideo) {
+      modalVideo.hidden = true;
+    }
+
+    if (modalBody) {
+      modalBody.classList.remove("has-video");
     }
 
     lastFocus = null;
