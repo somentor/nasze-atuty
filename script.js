@@ -1067,7 +1067,7 @@ function initTechModal(root) {
 
     "niepalnosc-pca": {
       title: "Niepalność PCA",
-      image: "src/technologie/niepalnosc-pca.webp",
+      image: "src/technologie/niepalnosc.webp",
       imageAlt: "Technologia niepalna i certyfikacja PCA",
 
       columns: [

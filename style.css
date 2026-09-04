@@ -1702,7 +1702,7 @@ html.ms-adv-techModal-open .ms-advantages {
 
   display: grid;
 
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 
   gap: 24px;
 
@@ -1780,28 +1780,32 @@ html.ms-adv-techModal-open .ms-advantages {
   z-index: 5;
 }
 
+/* poziom niski — 1 i 6 */
+#ms-adv-process .ms-adv-process > li:nth-child(1),
+#ms-adv-process .ms-adv-process > li:nth-child(6) {
+  margin-top: 0 !important;
+}
 
-/* kroki 2 i 4 wyżej */
-
-#ms-adv-process
-.ms-adv-process
-> li:nth-child(even) {
+/* poziom pośredni — 2 i 5 */
+#ms-adv-process .ms-adv-process > li:nth-child(2),
+#ms-adv-process .ms-adv-process > li:nth-child(5) {
   margin-top: -30px !important;
 }
 
+/* poziom najwyższy — 3 i 4 */
+#ms-adv-process .ms-adv-process > li:nth-child(3),
+#ms-adv-process .ms-adv-process > li:nth-child(4) {
+  margin-top: -60px !important;
+}
 
 /* usunięcie standardowego markera OL */
-
 #ms-adv-process
 .ms-adv-process
 > li::marker {
   content: "";
 }
 
-
-/* wyłącz stare pseudoelementy,
-   jeśli były wcześniej używane */
-
+/* wyłącz stare pseudoelementy, jeśli były wcześniej używane */
 #ms-adv-process
 .ms-adv-process
 > li::before,
@@ -1814,7 +1818,7 @@ html.ms-adv-techModal-open .ms-advantages {
 
 
 /* =========================================================
-   NUMEREK 1 / 2 / 3 / 4 / 5
+   NUMEREK 1 / 2 / 3 / 4 / 5 / 6
    ========================================================= */
 
 #ms-adv-process
