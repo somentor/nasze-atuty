@@ -1019,9 +1019,9 @@ function initTechModal(root) {
 
       columns: [
         {
-          title: "Lite aluminium",
+          title: "Lita blacha aluminiowa",
           subtitle: "⭐⭐⭐⭐⭐",
-          text: "Materiał klasy premium, zapewniający wyjątkową precyzję nadruku, niezwykłą sztywność, stabilność wymiarową i bardzo dużą trwałość. Możliwość zabezpieczenia jej lakierem ogniotrwałym bardzo podnosi jej walory użytkowe."
+          text: "Materiał klasy <strong>premium</strong>, zapewniający wyjątkową precyzję nadruku, niezwykłą sztywność, stabilność wymiarową i bardzo dużą trwałość. Możliwość zabezpieczenia tej blachy lakierem ogniotrwałym bardzo podnosi jej walory użytkowe."
         },
         {
           title: "Dibond",
@@ -1045,7 +1045,7 @@ function initTechModal(root) {
       columns: [
         {
           title: "Lakier UV",
-          text: "opis"
+          text: "Dodatkowa, bezbarwna warstwa ochronna nanoszona bezpośrednio w procesie druku i utwardzana UV. Zwiększa odporność powierzchni graficznej na ścieranie, drobne uszkodzenia mechaniczne, zabrudzenia oraz działanie czynników zewnętrznych. Lakier tworzy <strong>trwałą, jednolitą powłokę bez dodatkowej warstwy folii</strong>, dzięki czemu zachowana zostaje wysoka jakość, ostrość i estetyka grafiki. Proces nanoszenia i utwardzania odbywa się bezpośrednio z maszyny drukującej, co zapewnia bardzo dobrą przyczepność powłoki do zadrukowanej powierzchni."
         }
       ]
     },
@@ -1058,26 +1058,22 @@ function initTechModal(root) {
 
       columns: [
         {
-          title: "Mat",
-          text: "opis"
-        },
-        {
-          title: "Połysk",
-          text: "opis"
+          title: "Laminat",
+          text: "<p>Ta dodatkowa, foliowa warstwa ochronna <strong>zwiększa odporność powierzchni graficznej na drobne uszkodzenia i zabrudzenia, w tym ślady po flamastrach, farbach w sprayu.</strong> Jest powłoką przeźroczystą, zmywalną, ale tylko dedykowanymi środkami i przy uwzględnieniu krótkotrwałej eksploatacji w warunkach zewnętrznych.</p><p>Laminat występuje w wersji mat lub połysk – w zależności od preferencji Klienta.</p><p>Nie ma zasadniczego wpływu na trwałość powierzchni graficznych. </p>"
         }
       ]
     },
 
 
     "niepalnosc-pca": {
-      title: "Niepalność i PCA",
+      title: "Niepalność PCA",
       image: "src/technologie/niepalnosc-pca.webp",
       imageAlt: "Technologia niepalna i certyfikacja PCA",
 
       columns: [
         {
-          title: "Lakier utwardzony ogniotrwale",
-          text: "opis"
+          title: "Niepalność PCA - innowacyjne technologie",
+          text: "<p>W najbardziej wymagających realizacjach stosujemy <strong>specjalistyczne systemy zabezpieczania powierzchni graficznych.</strong> Technologia ta pozwala uzyskać trwałą, stabilną i <strong>niezwykle odporną</strong> powierzchnię przeznaczoną do intensywnej oraz długotrwałej eksploatacji.</p><p>Potwierdzeniem jakości naszych rozwiązań jest możliwość stosowania systemów zabezpieczenia powierzchni graficznych w <strong>klasie reakcji na ogień A2-s1,d0.</strong> Parametr ten jest potwierdzany niezależnymi badaniami i odpowiednią dokumentacją opracowaną przez kompetentne podmioty, posiadające <strong>akredytację PCA</strong> - Polskiego Centrum Akredytacji.</p>"
         }
       ]
     },
@@ -1091,15 +1087,15 @@ function initTechModal(root) {
       columns: [
         {
           title: "Iglaste",
-          text: "Opis stosowanych gatunków i rodzajów drewna."
+          text: "Opis"
         },
         {
           title: "Liściaste",
-          text: "Opis możliwości technologicznych obróbki CNC."
+          text: "Opis"
         },
         {
           title: "KVH",
-          text: "Opis możliwości technologicznych obróbki CNC."
+          text: "Opis"
         }
       ]
     },
@@ -1199,7 +1195,7 @@ function initTechModal(root) {
       if (column.text) {
         var text = document.createElement("p");
         text.className = "ms-adv-techModal__columnText";
-        text.textContent = column.text;
+        text.innerHTML = column.text;
         item.appendChild(text);
       }
 

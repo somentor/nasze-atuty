@@ -909,6 +909,15 @@ body.ms-advantages-page :where(.page-title, .page__title, .information__title, .
   padding: 30px 30px 28px;
   overflow: hidden;
 
+  display: grid;
+  grid-template-rows:
+    auto   /* numer + ikona */
+    auto   /* tytuł */
+    auto   /* podtytuł */
+    1fr    /* opis - wypełnia wolne miejsce */
+    auto;  /* seeMore */
+
+
   border:1px solid rgba(17, 24, 39, .11);
   border-radius: 18px;
 
@@ -1028,18 +1037,20 @@ body.ms-advantages-page :where(.page-title, .page__title, .information__title, .
    TYTUŁ
    ========================================================= */
 
-#ms-adv-tech .ms-adv-techGrid strong {
+#ms-adv-tech .ms-adv-techGrid article > strong {
   display: block;
 
   margin: 0;
   padding: 0;
+
   color: var(--adv-text);
+
   font-size: 23px;
   line-height: 1.15;
   font-weight: 900;
+
   letter-spacing: -.035em;
 }
-
 
 /* =========================================================
    ZIELONY PODTYTUŁ
@@ -1072,10 +1083,50 @@ body.ms-advantages-page :where(.page-title, .page__title, .information__title, .
 }
 
 #ms-adv-tech .ms-adv-techGrid p strong {
-  font-size: 15px !important;
-  line-height: 1.5 !important;
-  font-weight: 650 !important;
-  padding-top: 10px;
+  display: inline;
+
+  margin: 0;
+  padding: 0;
+
+  color: inherit;
+
+  font-size: inherit;
+  line-height: inherit;
+
+  font-weight: 700;
+
+  letter-spacing: inherit;
+}
+
+#ms-adv-tech .ms-adv-techGrid__seeMore {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  margin-top: 20px;
+  padding: 8px 14px;
+
+  border: none;
+  border-radius: 10px;
+  outline: none;
+
+  background: transparent;
+  background-image: linear-gradient(to right, #000 0%, #555 51%, #000 100%);
+  background-size: 200% auto;
+  color: white;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  transition: 0.5s;
+}
+
+#ms-adv-tech .ms-adv-techGrid article:hover
+.ms-adv-techGrid__seeMore {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
 
 
@@ -1333,7 +1384,7 @@ html.ms-adv-techModal-open .ms-advantages {
   display: flex;
   flex-direction: column;
 
-  padding: 28px 32px 32px;
+  padding: 32px 0 32px 0;
 
   overflow-y: auto;
 }
@@ -1354,11 +1405,10 @@ html.ms-adv-techModal-open .ms-advantages {
 
 .ms-adv-techModal__column {
   min-width: 0;
-  padding: 4px 26px 4px 0;
+  padding: 4px 26px;
 }
 
 .ms-adv-techModal__column + .ms-adv-techModal__column {
-  padding-left: 26px;
   border-left: 1px solid rgba(17, 24, 39, .11);
 }
 
