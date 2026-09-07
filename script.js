@@ -1096,11 +1096,11 @@ function initTechModal(root) {
       columns: [
         {
           title: "Drewno standard",
-          text: "W standardowych realizacjach wykorzystujemy słupy drewniane toczone z drewna litego tzw. Okrąglaki (średnicy najczęściej 12-14 cm i 60-80 cm) oraz krawędziaki, wykonywane głównie z drewna iglastego."
+          text: "W standardowych realizacjach wykorzystujemy słupy drewniane toczone z drewna litego tzw. okrąglaki (średnicy najczęściej 12-14 cm i 60-80 cm) oraz krawędziaki, wykonywane głównie z drewna iglastego."
         },
         {
           title: "Drewno GLT / glulam",
-          text: "<p>Z drewna GLT wykonujemy precyzyjnie obrabiane i toczone słupy o przekroju kołowym, standardowo o średnicach <strong>Ø120 mm oraz Ø60 mm</strong>. Stosujemy je tam, gdzie szczególne znaczenie mają trwałość, stabilność geometryczna i wysoka estetyka wykonania.</p><p>GLT powstaje z odpowiednio przygotowanych i wysuszonych warstw drewna, łączonych w kontrolowanym procesie technologicznym. Taka budowa znacząco ogranicza skręcanie, odkształcenia oraz powstawanie głębokich pęknięć charakterystycznych dla drewna litego, zapewniając jednocześnie wysoką stabilność wymiarową i jednorodność materiału.</p><p>Dzięki tym właściwościom drewno GLT doskonale sprawdza się w naszych certyfikowanych urządzeniach, wykonywanych zgodnie z wymaganiami normy <strong>PN-EN 1176-1+A1:2024-03.</strong></p>"
+          text: "<p>Z drewna GLT wykonujemy precyzyjnie obrabiane i toczone słupy o przekroju kołowym, standardowo o średnicach <strong>120 mm oraz 60 mm</strong>. Stosujemy je tam, gdzie szczególne znaczenie mają trwałość, stabilność geometryczna i wysoka estetyka wykonania.</p><p>GLT powstaje z odpowiednio przygotowanych i wysuszonych warstw drewna, łączonych w kontrolowanym procesie technologicznym. Taka budowa znacząco ogranicza skręcanie, odkształcenia oraz powstawanie głębokich pęknięć charakterystycznych dla drewna litego, zapewniając jednocześnie wysoką stabilność wymiarową i jednorodność materiału.</p><p>Dzięki tym właściwościom drewno GLT doskonale sprawdza się w naszych certyfikowanych urządzeniach, wykonywanych zgodnie z wymaganiami normy <strong>PN-EN 1176-1+A1:2024-03.</strong></p>"
         },
         {
           title: "Drewno KVH",
